@@ -30,6 +30,7 @@ func TestFindAllConcatenatedWordsInADict(t *testing.T) {
 		"letters":   {input: []string{"a", "b", "ab", "abd"}, want: []string{"ab"}},
 		"noConcats": {input: []string{"a", "ab", "c"}, want: []string{}},
 		"empty":     {input: []string{}, want: []string{}},
+		"leetcode":  {input: []string{"cat", "cats", "catsdogcats", "dog", "dogcatsdog", "hippopotamuses", "rat", "ratcatdogcat"}, want: []string{"catsdogcats", "dogcatsdog", "ratcatdogcat"}},
 	}
 
 	for name, tc := range tests {

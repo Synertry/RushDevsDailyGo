@@ -1,4 +1,4 @@
-module github.com/Synertry/RushDevsDaily
+module github.com/Synertry/RushDevsDailyGo
 
 go 1.19
 

@@ -8,4 +8,4 @@
 
 Go Code für die Dailies vom Discord-Server RushDevs im Channel [🧠 | daily-aufgaben](https://discord.com/channels/943265457727766608/1018218760089378828)
 
-The solutions are inf function format. So for submission you still have call it in a main() function. 
+The solutions are inf function format. So for submission you still have call it in a main() function.
