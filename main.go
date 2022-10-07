@@ -3,13 +3,13 @@ package main
 import (
 	"fmt"
 
-	"github.com/Synertry/RushDevsDaily/Daily/11"
-	"github.com/Synertry/RushDevsDaily/Daily/13"
-	"github.com/Synertry/RushDevsDaily/Daily/14"
-	"github.com/Synertry/RushDevsDaily/Daily/16"
-	"github.com/Synertry/RushDevsDaily/Daily/18"
-	"github.com/Synertry/RushDevsDaily/Daily/20"
-	"github.com/Synertry/RushDevsDaily/Daily/21"
+	"github.com/Synertry/RushDevsDailyGo/Daily/11"
+	"github.com/Synertry/RushDevsDailyGo/Daily/13"
+	"github.com/Synertry/RushDevsDailyGo/Daily/14"
+	"github.com/Synertry/RushDevsDailyGo/Daily/16"
+	"github.com/Synertry/RushDevsDailyGo/Daily/18"
+	"github.com/Synertry/RushDevsDailyGo/Daily/20"
+	"github.com/Synertry/RushDevsDailyGo/Daily/21"
 )
 
 var (
