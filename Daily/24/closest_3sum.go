@@ -31,7 +31,7 @@ func Closest_3sum(nums []int, target int) (threeNums []int) {
 					threeNums = []int{nums[i], nums[low], nums[high]}
 				}
 			} else {
-				return threeNums
+				return []int{nums[i], nums[low], nums[high]}
 			}
 
 		}
