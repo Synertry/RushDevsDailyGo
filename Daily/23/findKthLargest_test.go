@@ -2,6 +2,7 @@ package Daily23
 
 import (
 	"math/rand"
+	"sort"
 	"testing"
 	"time"
 
@@ -10,7 +11,7 @@ import (
 
 var resultInt int
 
-func TestFindAllConcatenatedWordsInADict(t *testing.T) {
+func TestFindKthLargest(t *testing.T) {
 	tests := map[string]struct {
 		input  []int
 		target int
@@ -35,7 +36,7 @@ func TestFindAllConcatenatedWordsInADict(t *testing.T) {
 	}
 }
 
-func BenchmarkFindAllConcatenatedWordsInADict(b *testing.B) {
+func BenchmarkFindKthLargest(b *testing.B) {
 	b.ReportAllocs()
 	benchmarks := []struct { // do not use maps! Order will be randomized
 		name string
@@ -59,4 +60,35 @@ func BenchmarkFindAllConcatenatedWordsInADict(b *testing.B) {
 			resultInt = result
 		})
 	}
+}
+
+func BenchmarkFindKthLargestSimple(b *testing.B) {
+	b.ReportAllocs()
+	benchmarks := []struct { // do not use maps! Order will be randomized
+		name string
+		len  int
+	}{
+		{"ArrLen2", 2},
+		{"ArrLen10^1", 10},
+		{"ArrLen10^2", 100},
+		{"ArrLen10^3", 1000},
+		{"ArrLen10^4", 10000},
+	}
+
+	for _, bm := range benchmarks {
+		b.Run(bm.name, func(b *testing.B) {
+			rand.Seed(time.Now().UnixNano())
+			input, target, result := rand.Perm(bm.len), rand.Intn(bm.len-1)+1, 0
+			b.ResetTimer()
+			for i := 0; i < b.N; i++ {
+				result = simpleSolution(input, target)
+			}
+			resultInt = result
+		})
+	}
+}
+
+func simpleSolution(arr []int, k int) int {
+	sort.Ints(arr)
+	return arr[len(arr)-k]
 }
