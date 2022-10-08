@@ -3,13 +3,14 @@ package main
 import (
 	"fmt"
 
-	"github.com/Synertry/RushDevsDailyGo/Daily/11"
-	"github.com/Synertry/RushDevsDailyGo/Daily/13"
-	"github.com/Synertry/RushDevsDailyGo/Daily/14"
-	"github.com/Synertry/RushDevsDailyGo/Daily/16"
-	"github.com/Synertry/RushDevsDailyGo/Daily/18"
-	"github.com/Synertry/RushDevsDailyGo/Daily/20"
-	"github.com/Synertry/RushDevsDailyGo/Daily/21"
+	Daily11 "github.com/Synertry/RushDevsDailyGo/Daily/11"
+	Daily13 "github.com/Synertry/RushDevsDailyGo/Daily/13"
+	Daily14 "github.com/Synertry/RushDevsDailyGo/Daily/14"
+	Daily16 "github.com/Synertry/RushDevsDailyGo/Daily/16"
+	Daily18 "github.com/Synertry/RushDevsDailyGo/Daily/18"
+	Daily20 "github.com/Synertry/RushDevsDailyGo/Daily/20"
+	Daily21 "github.com/Synertry/RushDevsDailyGo/Daily/21"
+	Daily23 "github.com/Synertry/RushDevsDailyGo/Daily/23"
 )
 
 var (
@@ -54,4 +55,24 @@ func main() {
 	// Daily 21
 	sliceOfStrings = []string{"tech", "lead", "techlead", "cat", "cats", "dog", "catsdog"}
 	fmt.Printf("The concatenated words for %v:\n\t-> %v\n\n", sliceOfStrings, Daily21.FindAllConcatenatedWordsInADict(sliceOfStrings))
+
+	// Daily 23
+	sliceOfInts = []int{8, 7, 2, 3, 4, 1, 5, 9, 0}
+	num = 3
+	// fmt.Printf("The %dth largest element in slice %v is:\n\t-> %d\n\n", num, sliceOfInts, Daily23.FindKthLargest(sliceOfInts, num))
+	print("The ", num, "th largest element in slice ")
+	printSliceOfInts(sliceOfInts)
+	println(" is:")
+	print("\t-> ", Daily23.FindKthLargest(sliceOfInts, num))
+}
+
+func printSliceOfInts(slice []int) {
+	print("[")
+	for i, val := range slice {
+		if i > 0 {
+			print(", ")
+		}
+		print(val)
+	}
+	print("]")
 }
