@@ -10,7 +10,7 @@ Es können auch Zahlen fehlen z.B array = [1, 2, 3, 5]
 #### Start
 Hier ist ein Beispiel und etwas Startcode:
 
-```
+```py
 def findKthLargest(arr, k):
 # Das Ausfüllen
 

@@ -11,6 +11,7 @@ import (
 	Daily20 "github.com/Synertry/RushDevsDailyGo/Daily/20"
 	Daily21 "github.com/Synertry/RushDevsDailyGo/Daily/21"
 	Daily23 "github.com/Synertry/RushDevsDailyGo/Daily/23"
+	Daily24 "github.com/Synertry/RushDevsDailyGo/Daily/24"
 )
 
 var (
@@ -59,20 +60,9 @@ func main() {
 	// Daily 23
 	sliceOfInts = []int{8, 7, 2, 3, 4, 1, 5, 9, 0}
 	num = 3
-	// fmt.Printf("The %dth largest element in slice %v is:\n\t-> %d\n\n", num, sliceOfInts, Daily23.FindKthLargest(sliceOfInts, num))
-	print("The ", num, "th largest element in slice ")
-	printSliceOfInts(sliceOfInts)
-	println(" is:")
-	print("\t-> ", Daily23.FindKthLargest(sliceOfInts, num))
-}
+	fmt.Printf("The %dth largest element in slice %v is:\n\t-> %d\n\n", num, sliceOfInts, Daily23.FindKthLargest(sliceOfInts, num))
 
-func printSliceOfInts(slice []int) {
-	print("[")
-	for i, val := range slice {
-		if i > 0 {
-			print(", ")
-		}
-		print(val)
-	}
-	print("]")
+	sliceOfInts = []int{2, 1, -5, 4}
+	num = -1
+	fmt.Printf("Closest 3sum to %d in %v is:\n\t-> %v\n\n", num, sliceOfInts, Daily24.Closest_3sum(sliceOfInts, num))
 }
