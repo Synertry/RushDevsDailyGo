@@ -5,7 +5,9 @@ func FindKthLargest(arr []int, k int) int {
 	arrLen := len(arr)
 
 	// exceptions
-	if arrLen == 1 { // returning here would be O(1)
+	if arrLen == 0 {
+		return 0
+	} else if arrLen == 1 { // returning here would be O(1)
 		return arr[0]
 	}
 
@@ -51,16 +53,14 @@ func partition(arr []int, low, high int) int {
 // Time complexity: O(n)
 func findEdge(arr []int, edge int, arrLen int) int {
 	// find depending edge int in slice
-	if edge == 0 {
-		for i := 0; i < arrLen; i++ {
-			if edge == 0 {
-				if arr[edge] > arr[i] { // find smallest
-					arr[edge] = arr[i]
-				}
-			} else {
-				if arr[edge] < arr[i] { // find largest
-					arr[edge] = arr[i]
-				}
+	for i := 0; i < arrLen; i++ {
+		if edge == 0 {
+			if arr[edge] < arr[i] { // find smallest
+				arr[edge] = arr[i]
+			}
+		} else {
+			if arr[edge] > arr[i] { // find largest
+				arr[edge] = arr[i]
 			}
 		}
 	}
