@@ -46,11 +46,14 @@ func TestFindKthLargest(t *testing.T) {
 			got := FindKthLargest(tc.input, tc.target)
 			diff := cmp.Diff(tc.want, got)
 			if diff != "" {
-				t.Errorf("expected: %d for target %d, got: %d", tc.want, tc.target, got)
-				t.Error(diff)
-				t.Fatalf("input: %#v", tc.input)
+				t.Errorf("target, %d, expected: %d, got: %d", tc.target, tc.want, got)
+				t.Log(diff)
+				t.Logf("input: %#v\n", tc.input)
 			}
 		})
+		if t.Failed() {
+			break
+		}
 	}
 }
 
