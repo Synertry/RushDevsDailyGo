@@ -7,13 +7,32 @@ import (
 	"testing"
 	"time"
 
+	"github.com/Synertry/GoSysUtils/Math"
 	"github.com/google/go-cmp/cmp"
 )
 
+type benchmark struct {
+	name string
+	len  int
+}
+
+const maxExpArrLen = 4
+
 var (
-	resultInt int
-	random    = rand.New(rand.NewSource(time.Now().UnixNano()))
+	resultInt  int
+	random     = rand.New(rand.NewSource(time.Now().UnixNano()))
+	benchmarks = make([]benchmark, maxExpArrLen+1) // do not use maps! Order will be randomized; + 1 for 2^0
 )
+
+func init() {
+	// generate benchmark data
+	benchmarks[0] = benchmark{name: "ArrLen2", len: 2} // start case
+
+	for i := 1; i <= maxExpArrLen; i++ {
+		arrLen := Math.IntPow(10, i)
+		benchmarks[i] = benchmark{name: "ArrLen10^" + strconv.Itoa(i), len: arrLen}
+	}
+}
 
 func TestFindKthLargest(t *testing.T) {
 	tests := map[string]struct {
@@ -58,18 +77,6 @@ func TestFindKthLargest(t *testing.T) {
 }
 
 func BenchmarkFindKthLargest(b *testing.B) {
-	b.ReportAllocs()
-	benchmarks := []struct { // do not use maps! Order will be randomized
-		name string
-		len  int
-	}{
-		{"ArrLen2", 2},
-		{"ArrLen10^1", 10},
-		{"ArrLen10^2", 100},
-		{"ArrLen10^3", 1000},
-		{"ArrLen10^4", 10000},
-	}
-
 	for _, bm := range benchmarks {
 		b.Run(bm.name, func(b *testing.B) {
 			input, target, result := random.Perm(bm.len), random.Intn(bm.len-1)+1, 0
@@ -83,18 +90,6 @@ func BenchmarkFindKthLargest(b *testing.B) {
 }
 
 func BenchmarkFindKthLargestSimple(b *testing.B) {
-	b.ReportAllocs()
-	benchmarks := []struct { // do not use maps! Order will be randomized
-		name string
-		len  int
-	}{
-		{"ArrLen2", 2},
-		{"ArrLen10^1", 10},
-		{"ArrLen10^2", 100},
-		{"ArrLen10^3", 1000},
-		{"ArrLen10^4", 10000},
-	}
-
 	for _, bm := range benchmarks {
 		b.Run(bm.name, func(b *testing.B) {
 			input, target, result := random.Perm(bm.len), random.Intn(bm.len-1)+1, 0

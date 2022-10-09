@@ -7,6 +7,7 @@ import (
 	"testing"
 	"time"
 
+	"github.com/Synertry/GoSysUtils/Math"
 	"github.com/google/go-cmp/cmp"
 )
 
@@ -68,16 +69,18 @@ func TestFindDupesInSortedList(t *testing.T) {
 }
 
 func BenchmarkFindDupesInSortedList(b *testing.B) {
-	b.ReportAllocs()
-	benchmarks := []struct { // do not use maps! Order will be randomized
+	maxExpArrLen := 4
+	type benchmark struct {
 		name string
 		len  int
-	}{
-		{"ArrLen3", 3},
-		{"ArrLen10^1", 10},
-		{"ArrLen10^2", 100},
-		{"ArrLen10^3", 1000},
-		{"ArrLen10^4", 10000},
+	}
+
+	benchmarks := make([]benchmark, maxExpArrLen+1)    // do not use maps! Order will be randomized; + 1 for 2^0
+	benchmarks[0] = benchmark{name: "ArrLen3", len: 3} // start case
+
+	for i := 1; i <= maxExpArrLen; i++ {
+		arrLen := Math.IntPow(10, i)
+		benchmarks[i] = benchmark{name: "ArrLen10^" + strconv.Itoa(i), len: arrLen}
 	}
 
 	for _, bm := range benchmarks {

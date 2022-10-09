@@ -2,4 +2,7 @@ module github.com/Synertry/RushDevsDailyGo
 
 go 1.19
 
-require github.com/google/go-cmp v0.5.9 // indirect
+require (
+	github.com/Synertry/GoSysUtils v0.5.5
+	github.com/google/go-cmp v0.5.9
+)

@@ -2,13 +2,15 @@ package Daily24
 
 import (
 	"math/rand"
+	"strconv"
 	"testing"
 	"time"
 
+	"github.com/Synertry/GoSysUtils/Math"
 	"github.com/google/go-cmp/cmp"
 )
 
-var resultInts []int
+var sliceOfInts []int
 
 func TestClosest_3sum(t *testing.T) {
 	tests := map[string]struct {
@@ -35,16 +37,18 @@ func TestClosest_3sum(t *testing.T) {
 }
 
 func BenchmarkClosest_3sum(b *testing.B) {
-	b.ReportAllocs()
-	benchmarks := []struct { // do not use maps! Order will be randomized
+	maxExpArrLen := 4
+	type benchmark struct {
 		name string
 		len  int
-	}{
-		{"ArrLen2", 2},
-		{"ArrLen10^1", 10},
-		{"ArrLen10^2", 100},
-		{"ArrLen10^3", 1000},
-		{"ArrLen10^4", 10000},
+	}
+
+	benchmarks := make([]benchmark, maxExpArrLen+1)    // do not use maps! Order will be randomized; + 1 for 2^0
+	benchmarks[0] = benchmark{name: "ArrLen2", len: 2} // start case
+
+	for i := 1; i <= maxExpArrLen; i++ {
+		arrLen := Math.IntPow(10, i)
+		benchmarks[i] = benchmark{name: "ArrLen10^" + strconv.Itoa(i), len: arrLen}
 	}
 
 	for _, bm := range benchmarks {
@@ -55,7 +59,7 @@ func BenchmarkClosest_3sum(b *testing.B) {
 			for i := 0; i < b.N; i++ {
 				result = Closest_3sum(input, target)
 			}
-			resultInts = result
+			sliceOfInts = result
 		})
 	}
 }

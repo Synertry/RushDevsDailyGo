@@ -62,6 +62,7 @@ func main() {
 	num = 3
 	fmt.Printf("The %dth largest element in slice %v is:\n\t-> %d\n\n", num, sliceOfInts, Daily23.FindKthLargest(sliceOfInts, num))
 
+	// Daily 24
 	sliceOfInts = []int{2, 1, -5, 4}
 	num = -1
 	fmt.Printf("Closest 3sum to %d in %v is:\n\t-> %v\n\n", num, sliceOfInts, Daily24.Closest_3sum(sliceOfInts, num))
