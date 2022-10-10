@@ -78,8 +78,7 @@ func TestRemove_dups(t *testing.T) {
 func BenchmarkRemove_dups(b *testing.B) {
 	for _, bm := range benchmarks {
 		b.Run(bm.name, func(b *testing.B) {
-			rand.Seed(time.Now().UnixNano())
-			input, result := make([]int, bm.len*2), 0
+			input, result := make([]int, 0, bm.len*2), 0
 			for i := 0; i < bm.len; i++ {
 				input = append(input, i, i)
 			}
