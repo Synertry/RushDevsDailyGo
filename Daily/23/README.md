@@ -3,12 +3,12 @@
 ---
 
 #### Aufgabe
-Finde die k-größte Zahl in einer Folge von unsortierten Zahlen. Z.B bei k=2 die 2. größte Zahl.
+> Finde die k-größte Zahl in einer Folge von unsortierten Zahlen. Z.B bei k=2 die 2. größte Zahl.
 Es können auch Zahlen fehlen z.B array = [1, 2, 3, 5]
 
 
 #### Start
-Hier ist ein Beispiel und etwas Startcode:
+> Hier ist ein Beispiel und etwas Startcode:
 
 ```py
 def findKthLargest(arr, k):

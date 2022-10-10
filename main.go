@@ -12,6 +12,7 @@ import (
 	Daily21 "github.com/Synertry/RushDevsDailyGo/Daily/21"
 	Daily23 "github.com/Synertry/RushDevsDailyGo/Daily/23"
 	Daily24 "github.com/Synertry/RushDevsDailyGo/Daily/24"
+	Daily26 "github.com/Synertry/RushDevsDailyGo/Daily/26"
 )
 
 var (
@@ -66,4 +67,9 @@ func main() {
 	sliceOfInts = []int{2, 1, -5, 4}
 	num = -1
 	fmt.Printf("Closest 3sum to %d in %v is:\n\t-> %v\n\n", num, sliceOfInts, Daily24.Closest_3sum(sliceOfInts, num))
+
+	// Daily 26
+	sliceOfInts = []int{1, 1, 2, 3, 4, 4, 4, 4, 4, 5, 5, 6, 7, 9}
+	fmt.Printf("Length without dupes of %v is:\n", sliceOfInts)
+	fmt.Printf("\t-> %d\n\n", Daily26.Remove_dups(sliceOfInts))
 }
