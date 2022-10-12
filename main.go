@@ -13,10 +13,12 @@ import (
 	Daily23 "github.com/Synertry/RushDevsDailyGo/Daily/23"
 	Daily24 "github.com/Synertry/RushDevsDailyGo/Daily/24"
 	Daily26 "github.com/Synertry/RushDevsDailyGo/Daily/26"
+	Daily27 "github.com/Synertry/RushDevsDailyGo/Daily/27"
 )
 
 var (
 	num            int
+	word           string
 	sliceOfInts    []int
 	sliceOfStrings []string
 	mat            [][]int
@@ -72,4 +74,10 @@ func main() {
 	sliceOfInts = []int{1, 1, 2, 3, 4, 4, 4, 4, 4, 5, 5, 6, 7, 9}
 	fmt.Printf("Length without dupes of %v is:\n", sliceOfInts)
 	fmt.Printf("\t-> %d\n\n", Daily26.Remove_dups(sliceOfInts))
+
+	// Daily 27
+	sliceOfStrings = []string{"a", "b", "c", "d", "e", "f"}
+	word = "bed"
+	fmt.Printf("Can spell %s from %v:\n\t-> %t\n\n", word, sliceOfStrings, Daily27.CanSpell(sliceOfStrings, word))
+
 }
