@@ -27,7 +27,7 @@ func init() {
 	// generate benchmark data
 	for i := 0; i <= maxExpArrLen; i++ {
 		arrLen := Math.IntPow(10, i)
-		benchmarks[i] = benchmark{name: "EvenArrLen10^" + strconv.Itoa(i), len: arrLen}
+		benchmarks[i] = benchmark{name: "ArrLen10^" + strconv.Itoa(i), len: arrLen}
 	}
 }
 
@@ -89,7 +89,7 @@ func BenchmarkFindMajorElemMixed(b *testing.B) {
 	}
 }
 
-func BenchmarkFindMajorElemFirstHalf(b *testing.B) {
+func BenchmarkFindMajorElem1stHalf(b *testing.B) {
 	for _, bm := range benchmarks {
 		b.Run(bm.name, func(b *testing.B) {
 			random.Seed(time.Now().UnixNano())
@@ -109,7 +109,7 @@ func BenchmarkFindMajorElemFirstHalf(b *testing.B) {
 	}
 }
 
-func BenchmarkFindMajorElemSecondHalf(b *testing.B) {
+func BenchmarkFindMajorElem2ndHalf(b *testing.B) {
 	for _, bm := range benchmarks {
 		b.Run(bm.name, func(b *testing.B) {
 			random.Seed(time.Now().UnixNano())

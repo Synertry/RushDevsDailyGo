@@ -11,7 +11,7 @@
 #### Start
 > Hier ist ein Beispiel und etwas Startcode:
 
-```
+```py
 class Solution(object):
 def canSpell(self, magazine, note):
 # Das Ausfüllen

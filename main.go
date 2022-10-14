@@ -14,6 +14,7 @@ import (
 	Daily24 "github.com/Synertry/RushDevsDailyGo/Daily/24"
 	Daily26 "github.com/Synertry/RushDevsDailyGo/Daily/26"
 	Daily27 "github.com/Synertry/RushDevsDailyGo/Daily/27"
+	Daily28 "github.com/Synertry/RushDevsDailyGo/Daily/28"
 )
 
 var (
@@ -78,6 +79,9 @@ func main() {
 	// Daily 27
 	sliceOfStrings = []string{"a", "b", "c", "d", "e", "f"}
 	word = "bed"
-	fmt.Printf("Can spell %s from %v:\n\t-> %t\n\n", word, sliceOfStrings, Daily27.CanSpell(sliceOfStrings, word))
+	fmt.Printf("Can spell %q from %v:\n\t-> %t\n\n", word, sliceOfStrings, Daily27.CanSpell(sliceOfStrings, word))
 
+	// Daily 28
+	word = "abcdcbea"
+	fmt.Printf("Can create a palindrome if we remove a letter from %q:\n\t-> %t", word, Daily28.Create_palindrome(word))
 }
