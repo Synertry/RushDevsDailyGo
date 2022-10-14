@@ -83,5 +83,5 @@ func main() {
 
 	// Daily 28
 	word = "abcdcbea"
-	fmt.Printf("Can create a palindrome if we remove a letter from %q:\n\t-> %t", word, Daily28.Create_palindrome(word))
+	fmt.Printf("Can create a palindrome if we remove a letter from %q:\n\t-> %t\n\n", word, Daily28.Create_palindrome(word))
 }
