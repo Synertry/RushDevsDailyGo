@@ -15,6 +15,7 @@ import (
 	Daily26 "github.com/Synertry/RushDevsDailyGo/Daily/26"
 	Daily27 "github.com/Synertry/RushDevsDailyGo/Daily/27"
 	Daily28 "github.com/Synertry/RushDevsDailyGo/Daily/28"
+	Daily31 "github.com/Synertry/RushDevsDailyGo/Daily/31"
 )
 
 var (
@@ -84,4 +85,8 @@ func main() {
 	// Daily 28
 	word = "abcdcbea"
 	fmt.Printf("Can create a palindrome if we remove a letter from %q:\n\t-> %t\n\n", word, Daily28.Create_palindrome(word))
+
+	// Daily 31
+	num = 28
+	fmt.Printf("Number %d is a perfect number:\n\t-> %t\n\n", num, Daily31.CheckPerfectNumber(num))
 }
