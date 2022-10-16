@@ -1,0 +1,60 @@
+name: Tests
+
+on:
+  push:
+    branches:
+      - staging
+      - development
+    ignore-paths:
+      - 'README.md'
+  pull_request:
+    branches:
+      - main
+      - staging
+      - development
+
+jobs:
+  test:
+    env:
+      GOPROXY: https://proxy.golang.org
+      GO111MODULE: on
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        go-version: [ '1.18.x', '1.19.x' ]
+#        os: [ubuntu-latest]
+#    runs-on: ${{ matrix.os }}
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup Go ${{ matrix.go-version }}
+        uses: actions/setup-go@v3
+        with:
+          go-version: ${{ matrix.go-version }}
+          check-latest: true
+          cache: true
+          cache-dependency-path: |
+            **/go.sum
+            **/go.mod
+
+      - name: Install dependencies
+        run: go get .
+
+      - name: Verify dependencies
+        run: go mod verify
+
+      # You can test your matrix by printing the current Go version
+      - name: Display Go version
+        run: go version
+
+      # Run tests for each daily
+      - name: Test with the Go CLI
+        run: go test -race -json vet=off ./.../Daily/*/*_test.go > TestResults-${{ matrix.go-version }}.json
+
+      - name: Upload Go test results
+        uses: actions/upload-artifact@v3
+        with:
+          name: Go-results-${{ matrix.go-version }}
+          path: TestResults-${{ matrix.go-version }}.json

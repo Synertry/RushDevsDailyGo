@@ -30,3 +30,4 @@ go.work
 # Application Test files and folders
 test
 cmd/debug.go
+*-dev.*
