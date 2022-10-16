@@ -49,9 +49,9 @@ jobs:
       - name: Display Go version
         run: go version
 
-      # Run tests for each daily
+      # Run tests for each daily, only test in sub dirs
       - name: Test with the Go CLI
-        run: go test -race -json ./.../Daily/*/*_test.go > TestResults-${{ matrix.go-version }}.json
+        run: go test -race -json ./Daily/... > TestResults-${{ matrix.go-version }}.json
 
       - name: Upload Go test results
         uses: actions/upload-artifact@v3
