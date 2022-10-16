@@ -2,6 +2,7 @@ package Daily1
 
 import (
 	"math/rand"
+	"sort"
 	"strconv"
 	"testing"
 	"time"
@@ -43,6 +44,7 @@ func TestIntersection(t *testing.T) {
 	for name, tc := range tests {
 		t.Run(name, func(t *testing.T) {
 			got := Intersection(tc.input)
+			sort.Ints(got)
 			diff := cmp.Diff(tc.want, got)
 			if diff != "" {
 				t.Errorf("expected: %#v, got: %#v", tc.want, got)
