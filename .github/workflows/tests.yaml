@@ -5,7 +5,7 @@ on:
     branches:
       - staging
       - development
-    ignore-paths:
+    paths-ignore:
       - 'README.md'
   pull_request:
     branches:
@@ -51,7 +51,7 @@ jobs:
 
       # Run tests for each daily
       - name: Test with the Go CLI
-        run: go test -race -json vet=off ./.../Daily/*/*_test.go > TestResults-${{ matrix.go-version }}.json
+        run: go test -race -json ./.../Daily/*/*_test.go > TestResults-${{ matrix.go-version }}.json
 
       - name: Upload Go test results
         uses: actions/upload-artifact@v3
