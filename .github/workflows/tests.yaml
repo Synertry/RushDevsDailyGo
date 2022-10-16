@@ -3,13 +3,11 @@ name: Tests
 on:
   push:
     branches:
-      - staging
       - dev
   pull_request:
     branches:
       - main
       - staging
-      - dev
 
 jobs:
   test:
