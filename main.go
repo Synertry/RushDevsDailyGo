@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 
+	Daily1 "github.com/Synertry/RushDevsDailyGo/Daily/1"
 	Daily11 "github.com/Synertry/RushDevsDailyGo/Daily/11"
 	Daily13 "github.com/Synertry/RushDevsDailyGo/Daily/13"
 	Daily14 "github.com/Synertry/RushDevsDailyGo/Daily/14"
@@ -27,6 +28,10 @@ var (
 )
 
 func main() {
+	// Daily 1
+	mat = [][]int{{1, 2, 3, 4}, {2, 4, 6, 8}, {3, 4, 5}}
+	fmt.Printf("Intersections of %#v are:\n\t-> %v\n\n", mat, Daily1.Intersection(mat))
+
 	// Daily 11
 	num = 23
 	fmt.Printf("Number of set bits in %d is:\n\t-> %d\n", num, Daily11.CountOneBits(num))
