@@ -5,11 +5,17 @@ on:
     branches:
       - staging
       - dev
+    paths-ignore:
+      - "README.md"
   pull_request:
     branches:
       - main
       - staging
-      - dev
+    paths-ignore:
+      - "README.md"
+
+permissions:
+  contents: read
 
 jobs:
   test:
@@ -49,10 +55,4 @@ jobs:
 
       # Run tests for each daily, only test in sub dirs
       - name: Test with the Go CLI
-        run: go test -race -json ./Daily/... > TestResults-${{ matrix.go-version }}.json
-
-      - name: Upload Go test results
-        uses: actions/upload-artifact@v3
-        with:
-          name: Go-results-${{ matrix.go-version }}
-          path: TestResults-${{ matrix.go-version }}.json
+        run: go test -race ./Daily/...

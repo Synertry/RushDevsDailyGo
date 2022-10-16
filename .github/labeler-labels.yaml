@@ -1,0 +1,20 @@
+# changes to Frontpage ord license
+"repo/readme": ./README.md
+"repo/license": ./LICENSE
+
+# changes to root folder
+"repo/root":
+- any: ['./main.go', './go.mod', './go.sum', './.gitignore']
+
+# Add dailies
+"daily":
+- all: ['./Daily/**/*.go', './Daily/**/*_test.go', './Daily/README.md']
+
+# changes to unit tests and benchmarks
+"daily/tests": ./Daily/**/*_test.go
+
+# changes to description of dailies
+"daily/description": ./Daily/**/README.md
+
+# changes to Github workflows
+"area/github": .github/**/*
