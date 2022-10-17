@@ -16,10 +16,9 @@ type benchmark struct {
 const maxExp = 8
 
 var (
-	bitCount       int
-	bitCountUint64 uint64
-	maxTestSize    = Math.IntPow(10, maxExp)
-	benchmarks     = make([]benchmark, maxExp+1) // do not use maps! Order will be randomized; + 1 for 2^0
+	bitCount    int
+	maxTestSize = Math.IntPow(10, maxExp)
+	benchmarks  = make([]benchmark, maxExp+1) // do not use maps! Order will be randomized; + 1 for 2^0
 )
 
 func init() {
