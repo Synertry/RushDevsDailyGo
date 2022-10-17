@@ -17,4 +17,5 @@
 "daily/description": ./Daily/**/README.md
 
 # changes to Github workflows
-"area/github": .github/**/*
+"area/workflows": .github/workflows/*
+"area/github": .github/*

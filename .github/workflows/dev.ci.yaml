@@ -26,7 +26,7 @@ jobs:
         with:
           ref: dev
 
-      - name: Setup Go ${{ matrix.go-version }}
+      - name: Setup Go version from go.mod
         uses: actions/setup-go@v3
         with:
           go-version-file: 'go.mod'
@@ -47,9 +47,9 @@ jobs:
           path: |
             ~/.cache/go-build
             ~/go/pkg/mod
-          key: dev-${{ runner.os }}-go-${{ hashFiles('**/go.sum') }}
+          key: ${{ github.GITHUB_REF_NAME }}-${{ runner.os }}-go-${{ hashFiles('**/go.sum') }}
           restore-keys: |
-            dev-${{ runner.os }}-go-
+            ${{ github.GITHUB_REF_NAME }}-${{ runner.os }}-go-
 
       # You can test your matrix by printing the current Go version
       # - name: Display Go version

@@ -47,6 +47,7 @@ jobs:
             **/go.mod
 
       - name: Install dependencies
+        if: steps.cache.outputs.cache-hit != 'true'
         run: go get .
 
       - name: Verify dependencies
@@ -58,9 +59,9 @@ jobs:
           path: |
             ~/.cache/go-build
             ~/go/pkg/mod
-          key: staging-${{ runner.os }}-${{ matrix.go-version }}-go-${{ hashFiles('**/go.sum') }}
+          key: ${{ github.GITHUB_REF_NAME }}-${{ runner.os }}-${{ matrix.go-version }}-go-${{ hashFiles('**/go.sum') }}
           restore-keys: |
-            staging-${{ runner.os }}-${{ matrix.go-version }}-go-
+            ${{ github.GITHUB_REF_NAME }}-${{ runner.os }}-${{ matrix.go-version }}-go-
 
       # Run tests for each daily, only test in sub dirs
       - name: Test with the Go CLI
@@ -79,7 +80,7 @@ jobs:
       contents: read
     strategy:
       matrix:
-        go-version: [ '1.18.x', '1.19.x' ]
+        go-version: [ '1.19.x' ]
     steps:
       - name: Checkout code
         uses: actions/checkout@v3.1.0
@@ -102,9 +103,9 @@ jobs:
           path: |
             ~/.cache/go-build
             ~/go/pkg/mod
-          key: ${{ runner.os }}-${{ matrix.go-version }}-go-${{ hashFiles('**/go.sum') }}
+          key: ${{ github.GITHUB_REF_NAME }}-${{ runner.os }}-${{ matrix.go-version }}-go-${{ hashFiles('**/go.sum') }}
           restore-keys: |
-            ${{ runner.os }}-${{ matrix.go-version }}-go-
+            ${{ github.GITHUB_REF_NAME }}-${{ runner.os }}-${{ matrix.go-version }}-go-
 
       - name: Static code analysis
         uses: golangci/golangci-lint-action@v3
@@ -123,6 +124,8 @@ jobs:
       - name: Dependency Review
         uses: actions/dependency-review-action@v2
         with:
+          base-ref: refs/heads/main
+          head-ref: refs/heads/staging
           fail-on-severity: high
 
   pull-request:
