@@ -32,7 +32,7 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v3.1.0
         with:
           ref: staging
 
@@ -82,7 +82,7 @@ jobs:
         go-version: [ '1.18.x', '1.19.x' ]
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v3.1.0
         with:
           ref: staging
 
@@ -135,7 +135,7 @@ jobs:
     needs: review-code
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v3.1.0
         with:
           ref: staging
 
