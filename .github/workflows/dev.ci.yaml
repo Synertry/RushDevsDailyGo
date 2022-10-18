@@ -3,7 +3,7 @@ name: Dev CI
 on:
   push:
     branches:
-      - dev
+      - develop
     paths-ignore:
       - "README.md"
 
