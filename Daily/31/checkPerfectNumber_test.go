@@ -36,7 +36,7 @@ var (
 func TestCheckPerfectNumberSqrt(t *testing.T) {
 	for name, tc := range tests {
 		t.Run(name, func(t *testing.T) {
-			got := checkPerfectNumberSqrt(tc.input)
+			got := CheckPerfectNumberSqrt(tc.input)
 			if got != tc.want {
 				t.Errorf("input: %d, expected: %t, got: %t", tc.input, tc.want, got)
 			}
@@ -50,7 +50,7 @@ func TestCheckPerfectNumberSqrt(t *testing.T) {
 func TestCheckPerfectNumberSqrtLog(t *testing.T) {
 	for name, tc := range tests {
 		t.Run(name, func(t *testing.T) {
-			got := checkPerfectNumberSqrtLog(tc.input)
+			got := CheckPerfectNumberSqrtLog(tc.input)
 			if got != tc.want {
 				t.Errorf("input: %d, expected: %t, got: %t", tc.input, tc.want, got)
 			}
@@ -70,7 +70,7 @@ func BenchmarkCheckPerfectNumberSqrt(b *testing.B) {
 			var result bool
 			b.ResetTimer()
 			for i := 0; i < b.N; i++ {
-				result = checkPerfectNumberSqrt(bm.num)
+				result = CheckPerfectNumberSqrt(bm.num)
 			}
 			resultBool = result
 		})
@@ -84,7 +84,7 @@ func BenchmarkCheckPerfectNumberSqrtLog(b *testing.B) {
 			var result bool
 			b.ResetTimer()
 			for i := 0; i < b.N; i++ {
-				result = checkPerfectNumberSqrtLog(bm.num)
+				result = CheckPerfectNumberSqrtLog(bm.num)
 			}
 			resultBool = result
 		})

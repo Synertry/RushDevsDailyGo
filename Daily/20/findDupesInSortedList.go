@@ -18,9 +18,11 @@ func FindDupesInSortedList(list []int, target int) []int {
 					indices[1] = mid + 1
 				}
 			} else if mid == length-1 { // upper bound, index can't be out of bounds
-				if list[mid-1] == target {
-					indices[0], indices[1] = mid-1, mid
-				}
+				// never happens because we climb up from the middle
+				// but neeed for index out of range protection
+				// if list[mid-1] == target {
+				// 	indices[0], indices[1] = mid-1, mid
+				// }
 			} else {
 				if list[mid+1] == target { // lookahead
 					indices[1] = mid + 1

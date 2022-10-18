@@ -26,6 +26,10 @@ func TestFindDupesInSortedList(t *testing.T) {
 		"intro2":   {input: []int{1, 2, 3, 4}, target: 5, want: []int{-1, -1}},
 		"single 0": {input: []int{0}, target: 0, want: []int{0, -1}},
 		"empty":    {input: []int{}, target: 1, want: []int{-1, -1}},
+		"covfill1": {input: []int{1, 2, 3, 4, 4, 5, 6, 7}, target: 4, want: []int{3, 4}},
+		"covfill2": {input: []int{1, 2, 3, 4, 5, 6, 7, 7}, target: 7, want: []int{6, 7}},
+		"covfill3": {input: []int{1, 2, 3, 4, 5, 6, 7}, target: 7, want: []int{6, -1}},
+		"covfill4": {input: []int{1, 2, 3, 4}, target: 4, want: []int{3, -1}},
 	}
 
 	for inputLen := 3; inputLen < 5; inputLen++ {
@@ -57,7 +61,7 @@ func TestFindDupesInSortedList(t *testing.T) {
 			got := FindDupesInSortedList(tc.input, tc.target)
 			diff := cmp.Diff(tc.want, got)
 			if diff != "" {
-				t.Errorf("target, %d, expected: %#v, got: %#v", tc.target, tc.want, got)
+				t.Errorf("target: %d, expected: %#v, got: %#v", tc.target, tc.want, got)
 				t.Log(diff)
 				t.Logf("input: %#v\n", tc.input)
 			}

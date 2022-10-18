@@ -1,10 +1,8 @@
 package Daily26
 
 import (
-	"math/rand"
 	"strconv"
 	"testing"
-	"time"
 
 	"github.com/Synertry/GoSysUtils/Math"
 	"github.com/google/go-cmp/cmp"
@@ -18,8 +16,8 @@ type benchmark struct {
 const maxExpArrLen = 7
 
 var (
-	resultInt  int
-	random     = rand.New(rand.NewSource(time.Now().UnixNano()))
+	resultInt int
+	// random     = rand.New(rand.NewSource(time.Now().UnixNano()))
 	benchmarks = make([]benchmark, maxExpArrLen+1) // do not use maps! Order will be randomized; + 1 for 2^0
 )
 
@@ -42,22 +40,23 @@ func TestRemove_dups(t *testing.T) {
 		"empty":  {input: []int{}, want: 1},
 	}
 
-	for i := 1; i < 1000; i++ { // random tests
-		random.Seed(time.Now().UnixNano()) // ensure pseudo-randomness
-		var input []int
+	// runs too long for coverage report
+	// for i := 1; i < 1000; i++ { // random tests
+	// 	random.Seed(time.Now().UnixNano()) // ensure pseudo-randomness
+	// 	var input []int
 
-		for k := 0; k < i; k++ {
-			input = append(input, k)
-			for j, dupeCount := 0, random.Intn(9)+1; j < dupeCount; j++ {
-				input = append(input, k)
-			}
-		}
+	// 	for k := 0; k < i; k++ {
+	// 		input = append(input, k)
+	// 		for j, dupeCount := 0, random.Intn(9)+1; j < dupeCount; j++ {
+	// 			input = append(input, k)
+	// 		}
+	// 	}
 
-		tests["randomMinLen"+strconv.Itoa(i)] = struct {
-			input []int
-			want  int
-		}{input: input, want: i}
-	}
+	// 	tests["randomMinLen"+strconv.Itoa(i)] = struct {
+	// 		input []int
+	// 		want  int
+	// 	}{input: input, want: i}
+	// }
 
 	for name, tc := range tests {
 		t.Run(name, func(t *testing.T) {

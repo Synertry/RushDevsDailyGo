@@ -1,0 +1,60 @@
+name: Dev CI
+
+on:
+  push:
+    branches:
+      - dev
+    paths-ignore:
+      - "README.md"
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event_name == 'pull_request' && github.head_ref || github.sha }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    name: Test
+    env:
+      GOPROXY: https://proxy.golang.org
+      GO111MODULE: on
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3.1.0
+        with:
+          ref: dev
+
+      - name: Setup Go version from go.mod
+        uses: actions/setup-go@v3
+        with:
+          go-version-file: 'go.mod'
+          cache: true
+          cache-dependency-path: |
+            **/go.sum
+            **/go.mod
+
+      - name: Install dependencies
+        run: go get .
+
+      - name: Verify dependencies
+        run: go mod verify
+
+      - name: Cache go setup deps
+        uses: actions/cache@v3
+        with:
+          path: |
+            ~/.cache/go-build
+            ~/go/pkg/mod
+          key: ${{ github.GITHUB_REF_NAME }}-${{ runner.os }}-go-${{ hashFiles('**/go.sum') }}
+          restore-keys: |
+            ${{ github.GITHUB_REF_NAME }}-${{ runner.os }}-go-
+
+      # You can test your matrix by printing the current Go version
+      # - name: Display Go version
+      #   run: go version
+
+      # Run tests for each daily, only test in sub dirs
+      - name: Test with the Go CLI
+        run: go test -race ./Daily/...
