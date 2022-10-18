@@ -24,7 +24,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3.1.0
         with:
-          ref: dev
+          ref: develop
 
       - name: Setup Go version from go.mod
         uses: actions/setup-go@v3

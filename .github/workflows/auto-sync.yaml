@@ -11,7 +11,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3.1.0
         with:
-          ref: dev
+          ref: develop
 
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v4
