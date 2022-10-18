@@ -50,15 +50,16 @@ func TestFindKthLargest(t *testing.T) {
 		"largeDiff":     {input: []int{1, 30, 81, 2, 20000, 6}, target: 2, want: 81},
 	}
 
-	for i := 2; i < 1000; i++ { // random tests
-		random.Seed(time.Now().UnixNano()) // ensure pseudo-randomness
-		input, target := random.Perm(i), random.Intn(i-1)+1
-		tests["randomLen"+strconv.Itoa(i+1)] = struct {
-			input  []int
-			target int
-			want   int
-		}{input: input, target: target, want: simpleSolution(input, target)}
-	}
+	// runs too long for coverage report
+	// for i := 2; i < 1000; i++ { // random tests
+	// 	random.Seed(time.Now().UnixNano()) // ensure pseudo-randomness
+	// 	input, target := random.Perm(i), random.Intn(i-1)+1
+	// 	tests["randomLen"+strconv.Itoa(i+1)] = struct {
+	// 		input  []int
+	// 		target int
+	// 		want   int
+	// 	}{input: input, target: target, want: simpleSolution(input, target)}
+	// }
 
 	for name, tc := range tests {
 		t.Run(name, func(t *testing.T) {

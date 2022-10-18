@@ -93,5 +93,5 @@ func main() {
 
 	// Daily 31
 	num = 28
-	fmt.Printf("Number %d is a perfect number:\n\t-> %t\n\n", num, Daily31.CheckPerfectNumber(num))
+	fmt.Printf("Number %d is a perfect number:\n\t-> %t\n\n", num, Daily31.CheckPerfectNumberSqrtLog(num))
 }

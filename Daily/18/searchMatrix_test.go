@@ -39,6 +39,8 @@ func TestSearchMatrix(t *testing.T) {
 	}{
 		"intro":  {input: [][]int{{1, 3, 5, 8}, {10, 11, 15, 16}, {24, 27, 30, 31}}, target: 4, want: false},
 		"intro2": {input: [][]int{{1, 3, 5, 8}, {10, 11, 15, 16}, {24, 27, 30, 31}}, target: 10, want: true},
+		"single": {input: [][]int{{1}}, target: 1, want: true},
+		"empty":  {input: [][]int{}, target: 0, want: false},
 	}
 
 	for name, tc := range tests {

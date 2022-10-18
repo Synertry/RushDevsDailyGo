@@ -42,19 +42,20 @@ func TestFindMajorElem(t *testing.T) {
 		"empty":  {input: []int{}, want: 0},
 	}
 
-	for i := 1; i < 1000; i++ { // random tests
-		random.Seed(time.Now().UnixNano()) // ensure pseudo-randomness
+	// runs too long for coverage report
+	// for i := 1; i < 1000; i++ { // random tests
+	// 	random.Seed(time.Now().UnixNano()) // ensure pseudo-randomness
 
-		input, majorElem := make([]int, 0, i*2), random.Intn(i)
-		for j := 0; j < i; j++ {
-			input = append(input, j, majorElem)
-		}
+	// 	input, majorElem := make([]int, 0, i*2), random.Intn(i)
+	// 	for j := 0; j < i; j++ {
+	// 		input = append(input, j, majorElem)
+	// 	}
 
-		tests["randomLen"+strconv.Itoa(i*2)] = struct {
-			input []int
-			want  int
-		}{input: input, want: majorElem}
-	}
+	// 	tests["randomLen"+strconv.Itoa(i*2)] = struct {
+	// 		input []int
+	// 		want  int
+	// 	}{input: input, want: majorElem}
+	// }
 
 	for name, tc := range tests {
 		t.Run(name, func(t *testing.T) {

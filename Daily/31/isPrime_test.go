@@ -50,7 +50,7 @@ func TestIsPrime(t *testing.T) {
 func TestIsPrimeBaillePSW(t *testing.T) {
 	for name, tcP := range testsPrimes {
 		t.Run(name, func(t *testing.T) {
-			if got := isPrime(tcP.input); got != tcP.want {
+			if got := isPrimeBaillePSW(tcP.input); got != tcP.want {
 				t.Errorf("input: %d, expected: %t, got: %t", tcP.input, tcP.want, got)
 			}
 		})
@@ -60,7 +60,7 @@ func TestIsPrimeBaillePSW(t *testing.T) {
 func TestIsPrimeMillerRabin(t *testing.T) {
 	for name, tcP := range testsPrimes {
 		t.Run(name, func(t *testing.T) {
-			if got := isPrime(tcP.input); got != tcP.want {
+			if got := isPrimeMillerRabin(tcP.input); got != tcP.want {
 				t.Errorf("input: %d, expected: %t, got: %t", tcP.input, tcP.want, got)
 			}
 		})

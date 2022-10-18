@@ -4,11 +4,10 @@ package Daily18
 // approach split the 2D into 1D and apply binary search
 func SearchMatrix(mat [][]int, target int) bool {
 	rows := len(mat)
-	cols := len(mat[0])
-
 	if rows == 0 {
 		return false
 	}
+	cols := len(mat[0])
 
 	low, high := 0, rows*cols-1 // split of 2D into 1D
 

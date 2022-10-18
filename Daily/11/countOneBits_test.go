@@ -13,7 +13,7 @@ type benchmark struct {
 	input int
 }
 
-const maxExp = 8
+const maxExp = 6
 
 var (
 	bitCount    int
