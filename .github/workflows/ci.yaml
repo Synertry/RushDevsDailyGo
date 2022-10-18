@@ -139,13 +139,12 @@ jobs:
           name: RushDevsDailyGo
           fail_ci_if_error: true
 
-  pull-request:
-    name: Create Pull Request
+  sync-changes:
+    name: Sync changes up and down stream
     runs-on: ubuntu-latest
     permissions:
       contents: read
       pull-requests: write
-      issues: write
     needs: review-code
     steps:
       - name: Checkout code
@@ -153,8 +152,23 @@ jobs:
         with:
           ref: staging
 
-      - name: Create Pull Request
-        id: cpr
+      - name: Create Pull Request to develop
+        uses: peter-evans/create-pull-request@v4
+        with:
+          token: ${{ secrets.PAT }}
+          branch: main
+          base: staging
+          assignees: Synertry
+          reviewers: Synertry
+          title: 'Pull request ready for merge into production at ${{ github.event.repository.updated_at }}'
+          body: |
+            This is an automatically created pull request to signal the completion of the staging branch steps.
+            It needs to be reviewed and approved before it can be merged into production.
+          labels: |
+            auto-pr
+            sync
+      
+      - name: Create Pull Request to main
         uses: peter-evans/create-pull-request@v4
         with:
           token: ${{ secrets.PAT }}
