@@ -1,3 +1,4 @@
+# Runner intensive tests and analysis
 name: CI
 
 on:
@@ -48,16 +49,6 @@ jobs:
       - name: Verify dependencies
         run: go mod verify
 
-      - name: Cache go setup deps
-        uses: actions/cache@v3
-        with:
-          path: |
-            ~/.cache/go-build
-            ~/go/pkg/mod
-          key: ${{ github.GITHUB_REF_NAME }}-${{ runner.os }}-${{ matrix.go-version }}-go-${{ hashFiles('**/go.sum') }}
-          restore-keys: |
-            ${{ github.GITHUB_REF_NAME }}-${{ runner.os }}-${{ matrix.go-version }}-go-
-
       # Run tests for each daily, only test in sub dirs
       - name: Test with the Go CLI
         run: go test -race ./Daily/...
@@ -92,16 +83,6 @@ jobs:
             **/go.sum
             **/go.mod
 
-      - name: Cache go setup deps
-        uses: actions/cache@v3
-        with:
-          path: |
-            ~/.cache/go-build
-            ~/go/pkg/mod
-          key: ${{ github.GITHUB_REF_NAME }}-${{ runner.os }}-${{ matrix.go-version }}-go-${{ hashFiles('**/go.sum') }}
-          restore-keys: |
-            ${{ github.GITHUB_REF_NAME }}-${{ runner.os }}-${{ matrix.go-version }}-go-
-
       - name: Static code analysis
         uses: golangci/golangci-lint-action@v3
         with:
@@ -122,9 +103,11 @@ jobs:
           base-ref: refs/heads/main
           head-ref: refs/heads/staging
           fail-on-severity: high
+          deny-licenses: LGPL-2.0, BSD-2-Clause, Apache-1.1, Apache-2.0
+          allow-licenses: MIT, BSL-1.0, BSD-3-CLAUSE, GPL-3.0
 
       - name: Generate Code Coverage
-        run: go test -race -vet off -covermode atomic -coverprofile coverage.out ./Daily/...
+        run: go test -v -race -vet off -covermode atomic -coverprofile coverage.out ./Daily/...
 
       - name: Upload Code Coverage to Codecov
         uses: codecov/codecov-action@v3

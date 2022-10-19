@@ -14,13 +14,13 @@ updates:
     # Raise pull requests for version updates
     # to gomod against the `develop` branch
     # Labels on pull requests for version updates only
-    target-branch: "develop"
+    target-branch: "staging"
     # Disable rebasing for npm pull requests
     rebase-strategy: "disabled"
-    # Allow up to 10 open pull requests 
+    # Allow up to 10 open pull requests
     open-pull-requests-limit: 10
     labels:
-      - "deps"
+      - "dependabot"
       - "gomod"
     assignees: [ Synertry ]
     reviewers: [ Synertry ]
