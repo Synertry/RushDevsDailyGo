@@ -104,7 +104,7 @@ jobs:
           head-ref: refs/heads/staging
           fail-on-severity: high
           deny-licenses: LGPL-2.0, BSD-2-Clause, Apache-1.1, Apache-2.0
-          allow-licenses: MIT, BSL-1.0, BSD-3-CLAUSE, GPL-3.0
+          # allow-licenses: MIT, BSL-1.0, BSD-3-CLAUSE, GPL-3.0
 
       - name: Generate Code Coverage
         run: go test -v -race -vet off -covermode atomic -coverprofile coverage.out ./Daily/...
