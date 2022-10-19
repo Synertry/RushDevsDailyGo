@@ -17,8 +17,8 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  build-setup:
-    name: Setup Go environment
+  test:
+    name: Test and Lint
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -53,6 +53,11 @@ jobs:
       - name: Test with the Go CLI
         run: go test -race ./Daily/...
 
+      - name: Static code analysis
+        uses: golangci/golangci-lint-action@v3
+        with:
+          version: latest
+
 
   review-code:
     name: Review code
@@ -82,11 +87,6 @@ jobs:
           cache-dependency-path: |
             **/go.sum
             **/go.mod
-
-      - name: Static code analysis
-        uses: golangci/golangci-lint-action@v3
-        with:
-          version: latest
 
       # Initializes the CodeQL tools for scanning.
       - name: Initialize CodeQL
