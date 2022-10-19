@@ -1,10 +1,14 @@
-# changes to Frontpage ord license
+# changes to Github
+"github/workflows": .github/workflows/*
+"github": .github/*
+
+# changes to frontpage or license
 "repo/readme": ./README.md
 "repo/license": ./LICENSE
 
 # changes to root folder
 "repo/root":
-- any: ['./main.go', './go.mod', './go.sum', './.gitignore']
+- any: ['./main.go', './go.mod', './go.sum', './.gitignore', './gitattributes']
 
 # Add dailies
 "daily":
@@ -15,7 +19,3 @@
 
 # changes to description of dailies
 "daily/description": ./Daily/**/README.md
-
-# changes to Github workflows
-"area/workflows": .github/workflows/*
-"area/github": .github/*

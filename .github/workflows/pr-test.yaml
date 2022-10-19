@@ -1,9 +1,9 @@
-name: Dev CI
+# Lightweight testing of PRs before it hits the intensive workflow on staging
+name: PR Test
 
 on:
-  push:
-    branches:
-      - develop
+  pull_request:
+    branches: [ staging ]
     paths-ignore:
       - "README.md"
 
@@ -13,7 +13,7 @@ concurrency:
 
 jobs:
   test:
-    name: Test
+    name: PR Test
     env:
       GOPROXY: https://proxy.golang.org
       GO111MODULE: on
@@ -24,7 +24,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3.1.0
         with:
-          ref: develop
+          ref: ${{ github.head_ref }}
 
       - name: Setup Go version from go.mod
         uses: actions/setup-go@v3
@@ -34,6 +34,9 @@ jobs:
           cache-dependency-path: |
             **/go.sum
             **/go.mod
+
+      - name: Display Go version
+        run: go version
 
       - name: Install dependencies
         run: go get .
@@ -47,14 +50,16 @@ jobs:
           path: |
             ~/.cache/go-build
             ~/go/pkg/mod
-          key: ${{ github.GITHUB_REF_NAME }}-${{ runner.os }}-go-${{ hashFiles('**/go.sum') }}
-          restore-keys: |
-            ${{ github.GITHUB_REF_NAME }}-${{ runner.os }}-go-
+          key: ${{ github.GITHUB_REF }}-${{ runner.os }}-go-${{ hashFiles('**/go.sum') }}
 
-      # You can test your matrix by printing the current Go version
-      # - name: Display Go version
-      #   run: go version
+          restore-keys: |
+            ${{ github.GITHUB_REF }}-${{ runner.os }}-go-
 
       # Run tests for each daily, only test in sub dirs
       - name: Test with the Go CLI
         run: go test -race ./Daily/...
+
+      - name: Static code analysis
+        uses: golangci/golangci-lint-action@v3
+        with:
+          version: latest
