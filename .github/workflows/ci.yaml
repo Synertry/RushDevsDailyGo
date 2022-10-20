@@ -57,6 +57,7 @@ jobs:
         uses: golangci/golangci-lint-action@v3
         with:
           version: latest
+          skip-cache: true
 
 
   review-code:
@@ -109,13 +110,21 @@ jobs:
       - name: Generate Code Coverage
         run: go test -v -race -vet off -covermode atomic -coverprofile coverage.out ./Daily/...
 
-      - name: Upload Code Coverage to Codecov
+      - name: Report test coverage to Codecov
         uses: codecov/codecov-action@v3
         with:
           files: ./coverage.out
           flags: unittests
           name: RushDevsDailyGo
           fail_ci_if_error: true
+
+      - name: Report test coverage to DeepSource
+        uses: deepsourcelabs/test-coverage-action@master
+        with:
+          key: go
+          coverage-file: coverage.out
+          dsn: ${{ secrets.DEEPSOURCE_DSN }}
+
 
   pull-request:
     name: Create pull request to main
@@ -133,7 +142,6 @@ jobs:
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v4
         with:
-          token: ${{ secrets.PAT }}
           branch: main
           base: staging
           assignees: Synertry
@@ -144,4 +152,3 @@ jobs:
             It needs to be reviewed and approved before it can be merged into production.
           labels: |
             auto-pr
-            release
