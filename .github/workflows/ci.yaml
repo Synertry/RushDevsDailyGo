@@ -127,7 +127,7 @@ jobs:
 
 
   pull-request:
-    name: Create pull request to main
+    name: Create PR to main
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -142,6 +142,7 @@ jobs:
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v4
         with:
+          token: ${{ secrets.PAT }}
           branch: main
           base: staging
           assignees: Synertry

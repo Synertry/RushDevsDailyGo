@@ -1,0 +1,18 @@
+# GitHub does support deletion of merged PRs, but it does not have an exclude filter for the staging branch, which would be fatal.
+name: Delete merged branches
+on:
+  pull_request:
+    types: [closed]
+    branches-ignore:
+      - 'main'
+      - 'staging'
+  
+jobs:
+  delete-branch:
+    name: Delete merged PR branch
+    runs-on: ubuntu-latest
+    steps:
+      - name: Delete branch
+        uses: SvanBoxel/delete-merged-branch@main
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
