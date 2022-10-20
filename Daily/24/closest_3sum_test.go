@@ -10,7 +10,10 @@ import (
 	"github.com/google/go-cmp/cmp"
 )
 
-var sliceOfInts []int
+var (
+	sliceOfInts []int
+	random      = rand.New(rand.NewSource(time.Now().UnixNano()))
+)
 
 func TestClosest_3sum(t *testing.T) {
 	tests := map[string]struct {
@@ -53,8 +56,8 @@ func BenchmarkClosest_3sum(b *testing.B) {
 
 	for _, bm := range benchmarks {
 		b.Run(bm.name, func(b *testing.B) {
-			rand.Seed(time.Now().UnixNano())
-			input, target, result := rand.Perm(bm.len), rand.Intn(bm.len-1)+1, make([]int, 3)
+			random.Seed(time.Now().UnixNano())
+			input, target, result := random.Perm(bm.len), random.Intn(bm.len-1)+1, make([]int, 3)
 			b.ResetTimer()
 			for i := 0; i < b.N; i++ {
 				result = Closest_3sum(input, target)

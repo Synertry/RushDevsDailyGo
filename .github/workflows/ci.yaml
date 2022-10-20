@@ -57,6 +57,7 @@ jobs:
         uses: golangci/golangci-lint-action@v3
         with:
           version: latest
+          skip-cache: true
 
 
   review-code:
@@ -117,6 +118,17 @@ jobs:
           name: RushDevsDailyGo
           fail_ci_if_error: true
 
+      - name: Report results to DeepSource
+        run: |
+          # Install deepsource CLI
+          curl https://deepsource.io/cli | sh
+
+          # From the root directory, run the report coverage command
+          ./bin/deepsource report --analyzer test-coverage --key go --value-file ./coverage.out
+        env:
+          DEEPSOURCE_DSN: ${{ secrets.DEEPSOURCE_DSN }}
+
+
   pull-request:
     name: Create pull request to main
     runs-on: ubuntu-latest
@@ -133,7 +145,6 @@ jobs:
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v4
         with:
-          token: ${{ secrets.PAT }}
           branch: main
           base: staging
           assignees: Synertry
@@ -144,4 +155,3 @@ jobs:
             It needs to be reviewed and approved before it can be merged into production.
           labels: |
             auto-pr
-            release
