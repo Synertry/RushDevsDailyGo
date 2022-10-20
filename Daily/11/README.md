@@ -3,10 +3,11 @@
 ---
 
 #### Aufgabe
+
 > Finde bei einer gegebenen Ganzzahl die Anzahl der 1-Bits, die sie hat.
 
-
 #### Start
+
 > Hier ist ein Beispiel und etwas Startcode:
 
 ```py
@@ -18,6 +19,6 @@ print(one_bits(23))
 # 23 = 0b10111
 ```
 
-
 #### Hinweis
+
 > -> num > 0<br>

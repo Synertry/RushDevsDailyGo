@@ -3,10 +3,11 @@
 ---
 
 #### Aufgabe
+
 > Eine perfekte Zahl ist eine positive ganze Zahl, die gleich der Summe aller ihrer positiven Teiler außer sich selbst ist.
 
-
 #### Start
+
 > Hier ist ein Beispiel und etwas Startcode:
 
 ```py
@@ -26,6 +27,6 @@ print(Solution().checkPerfectNumber(6))
 # 6 = 1 + 2 + 3
 ```
 
-
 #### Hinweis
+
 > -> tyeof num = Integer

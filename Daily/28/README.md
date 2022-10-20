@@ -3,10 +3,11 @@
 ---
 
 #### Aufgabe
+
 > Bestimme bei einer gegebenen Zeichenfolge, ob du ein beliebiges Zeichen entfernen könntest, um ein Palindrom zu erstellen.
 
-
 ### Start
+
 > Hier ist ein Beispiel und etwas Startcode:
 
 ```py
@@ -21,8 +22,8 @@ print(create_palindrome("abccaa"))
 # False
 ```
 
-
 ### Hinweis
+
 > -> s.length > 2<br>
 > -> typeof s = String<br
 > -> output = Boolean<br

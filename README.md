@@ -1,6 +1,7 @@
 ## RushDevsDailyGo
 
 <!-- [![Go Reference](https://pkg.go.dev/badge/github.com/Synertry/RushDevsDailyGo.svg)](https://pkg.go.dev/github.com/Synertry/RushDevsDailyGo) -->
+
 [![License](https://img.shields.io/badge/License-Boost_1.0-lightblue.svg)](https://www.boost.org/LICENSE_1_0.txt)
 ![GitHub go.mod Go version](https://img.shields.io/github/go-mod/go-version/Synertry/RushDevsDailyGo?logo=Go)
 [![CI](https://github.com/Synertry/RushDevsDailyGo/actions/workflows/ci.yaml/badge.svg?branch=staging)](https://github.com/Synertry/RushDevsDailyGo/actions/workflows?query%3ACI)

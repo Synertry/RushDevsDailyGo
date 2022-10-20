@@ -3,10 +3,11 @@
 ---
 
 #### Aufgabe
+
 > Finde bei einer sortierten Liste mit Duplikaten und einer Zielzahl n den Bereich, in dem die Zahl vorhanden ist (dargestellt als Tupel (niedrig, hoch), beide einschließlich. Wenn die Zahl nicht in der Liste vorhanden ist, gebe (-1, -1)) zurück.
 
-
 #### Start
+
 > Hier ist ein Beispiel und etwas Startcode:
 
 ```py
@@ -20,7 +21,7 @@ print(find_num([1, 2, 3, 4], 5))
 # (-1, -1)
 ```
 
-
 #### Hinweis
+
 > -> nums.entries = Integer<br>
 > -> nums.length > 2<br>
