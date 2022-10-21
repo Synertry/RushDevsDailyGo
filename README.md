@@ -15,7 +15,9 @@
 
 ### About
 
-Go Code for dailies challenges from the Discord server RushDevs in Channel [🧠 | daily-aufgaben](https://discord.com/channels/943265457727766608/1018218760089378828)
+Go Code for dailies challenges from the [Discord server RushDevs](https://discord.gg/ABAkZeyr9A) in Channel [🧠 | daily-aufgaben](https://discord.com/channels/943265457727766608/1018218760089378828)<br>
+Here is the invite link to join the server:
+[https://discord.gg/ABAkZeyr9A](https://discord.gg/ABAkZeyr9A)
 
 Each daily is accompanied by a README.md file with the task description, as well as unit tests and benchmarks.
 
@@ -49,4 +51,4 @@ The numbering is from the Discord channel, some numbers are missing, because tho
 | [27](https://github.com/Synertry/RushDevsDailyGo/tree/main/Daily/27) | [canSpell](https://github.com/Synertry/RushDevsDailyGo/blob/main/Daily/1/canSpell.go) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | O(n) | O(n) |                                 |
 | [28](https://github.com/Synertry/RushDevsDailyGo/tree/main/Daily/28) | [create_palindrome](https://github.com/Synertry/RushDevsDailyGo/blob/main/Daily/1/create-palindrome.go) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | O(n) | O(n) | without recursion               |
 | [31](https://github.com/Synertry/RushDevsDailyGo/tree/main/Daily/31) | [checkPerfectNumber](https://github.com/Synertry/RushDevsDailyGo/blob/main/Daily/1/checkPerfectNumber.go) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | O(√(log(n))) | O(1) | ❤                               |
-| [32](https://github.com/Synertry/RushDevsDailyGo/tree/main/Daily/32) | [frac_to_dec](https://github.com/Synertry/RushDevsDailyGo/blob/main/Daily/1/frac-to-dec.go) | | | | | |                                 |
+| [32](https://github.com/Synertry/RushDevsDailyGo/tree/main/Daily/32) | [frac_to_dec](https://github.com/Synertry/RushDevsDailyGo/blob/main/Daily/1/frac-to-dec.go) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | O(?) | | Hard w/o recursion |
