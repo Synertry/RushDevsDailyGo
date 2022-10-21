@@ -2,10 +2,13 @@ package main
 
 import "fmt"
 
+var num = 23
+
 func main() {
-	num := 23
-	fmt.Printf("Number of set bits in %d is:\n\t-> %d\n", num, one_bits(num))
-	fmt.Printf("Number of set bits in %d is (without bitwise operation):\n\t-> %d\n\n", num, one_bitsNonBitOps(num))
+	fmt.Printf("Number of set bits in %d is:\n\t-> %d", num, one_bits(num))
+	// Add line break in above print if you uncomment next lines
+	// fmt.Printf("Number of set bits in %d is (without bitwise operation):\n\t-> %d\n\n", num, one_bitsNonBitOps(num))
+	// fmt.Printf("Number of set bits in %d is (O(1)):\n\t-> %d\n\n", num, one_bitsO1(num))
 }
 
 func one_bits(num int) (cnt int) {
@@ -29,10 +32,10 @@ func one_bitsNonBitOps(num int) (cnt int) {
 
 // one_bitsO1 is the PopCnt alternative for Go
 // Time complexity: O(1)
-func one_bitsO1(x uint64) int {
-	const m0 = 0x5555555555555555 // 01010101 ...
-	const m1 = 0x3333333333333333 // 00110011 ...
-	const m2 = 0x0f0f0f0f0f0f0f0f // 00001111 ...
+func one_bitsO1(x int) int {
+	const m0 = 0x55555555 // 01010101 ...
+	const m1 = 0x33333333 // 00110011 ...
+	const m2 = 0x0f0f0f0f // 00001111 ...
 
 	// Implementation: Parallel summing of adjacent bits.
 	// See "Hacker's Delight", Chap. 5: Counting Bits.
@@ -46,6 +49,5 @@ func one_bitsO1(x uint64) int {
 	x = (x>>4 + x) & (m2 & m)
 	x += x >> 8
 	x += x >> 16
-	x += x >> 32
-	return int(x) & (1<<7 - 1)
+	return x & (1<<7 - 1)
 }

@@ -1,11 +1,13 @@
 package main
 
 import (
+	"fmt"
 	"math/bits"
 	"strconv"
 	"testing"
 
-	"github.com/Synertry/GoSysUtils/Math"
+	"github.com/Synertry/GoSysUtils/IO"
+	"github.com/Synertry/GoSysUtils/Math/Int"
 )
 
 type benchmark struct {
@@ -17,15 +19,23 @@ const maxExp = 6
 
 var (
 	bitCount    int
-	maxTestSize = Math.IntPow(10, maxExp)
+	maxTestSize = Int.Pow(10, maxExp)
 	benchmarks  = make([]benchmark, maxExp+1) // do not use maps! Order will be randomized; + 1 for 2^0
 )
 
 func init() {
 	// generate benchmark data
 	for i := 0; i <= maxExp; i++ { // -1 as start, because substraction is more costly than addition
-		inputNum := Math.IntPow(2, i)
+		inputNum := Int.Pow(2, i)
 		benchmarks[i] = benchmark{name: "2^" + strconv.Itoa(i), input: inputNum}
+	}
+}
+
+func TestMainFunc(t *testing.T) {
+	want := fmt.Sprintf("Number of set bits in %d is:\n\t-> %d", num, one_bits(num))
+	got := IO.GetOutput(main)
+	if got != want {
+		t.Errorf("expected: %s, got: %s", want, got)
 	}
 }
 
@@ -52,7 +62,8 @@ func TestOne_bitsNonBitOps(t *testing.T) {
 func TestOne_bitsO1(t *testing.T) {
 	for i := 0; i < maxTestSize; i++ {
 		std := bits.OnesCount64(uint64(i))
-		res := one_bitsO1(uint64(i))
+		// res := one_bitsO1(uint64(i))
+		res := one_bitsO1(i)
 		if std != res {
 			t.Fatalf("input: %d, expected %d, got %d", i, std, res)
 		}
@@ -88,7 +99,7 @@ func BenchmarkOne_bitsNonBitOps(b *testing.B) {
 func BenchmarkOne_bitsO1(b *testing.B) {
 	for _, bm := range benchmarks {
 		b.Run(bm.name, func(b *testing.B) {
-			cnt, input := 0, uint64(bm.input)
+			cnt, input := 0, bm.input
 			b.ResetTimer()
 			for i := 0; i < b.N; i++ {
 				cnt = one_bitsO1(input)

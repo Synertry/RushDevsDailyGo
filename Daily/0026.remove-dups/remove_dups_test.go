@@ -1,10 +1,12 @@
 package main
 
 import (
+	"fmt"
 	"strconv"
 	"testing"
 
-	"github.com/Synertry/GoSysUtils/Math"
+	"github.com/Synertry/GoSysUtils/IO"
+	"github.com/Synertry/GoSysUtils/Math/Int"
 	"github.com/google/go-cmp/cmp"
 )
 
@@ -24,8 +26,18 @@ var (
 func init() {
 	// generate benchmark data
 	for i := 0; i <= maxExpArrLen; i++ {
-		arrLen := Math.IntPow(10, i)
+		arrLen := Int.Pow(10, i)
 		benchmarks[i] = benchmark{name: "ArrLen10^" + strconv.Itoa(i), len: arrLen}
+	}
+}
+
+func TestMainFunc(t *testing.T) {
+	copySlice := make([]int, len(sliceOfInts))
+	copy(copySlice, sliceOfInts)
+	want := fmt.Sprintf("Length without dupes of %v is:\n\t-> %d", copySlice, remove_dups(copySlice))
+	got := IO.GetOutput(main)
+	if got != want {
+		t.Errorf("expected: %s, got: %s", want, got)
 	}
 }
 

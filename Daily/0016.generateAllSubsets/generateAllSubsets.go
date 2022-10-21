@@ -2,9 +2,10 @@ package main
 
 import "fmt"
 
+var sliceOfInts = []int{1, 2, 3}
+
 func main() {
-	sliceOfInts := []int{1, 2, 3}
-	fmt.Printf("All generated subsets of slice %v are:\n\t-> %v\n\n", sliceOfInts, generateAllSubsets(sliceOfInts))
+	fmt.Printf("All generated subsets of slice %v are:\n\t-> %v", sliceOfInts, generateAllSubsets(sliceOfInts))
 }
 
 // GenerateAllSubsets finds all combinations of a given set of integers [1, 2] -> [[], [1], [2], [1, 2]]

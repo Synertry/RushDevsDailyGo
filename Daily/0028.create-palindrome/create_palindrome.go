@@ -2,9 +2,10 @@ package main
 
 import "fmt"
 
+var word = "abcdcbea"
+
 func main() {
-	word := "abcdcbea"
-	fmt.Printf("Can create a palindrome if we remove a letter from %q:\n\t-> %t\n\n", word, create_palindrome(word))
+	fmt.Printf("Can create a palindrome if we remove a letter from %q:\n\t-> %t", word, create_palindrome(word))
 }
 
 // create_palindrome checks if a palindrome can be created when 1 letter gets removed

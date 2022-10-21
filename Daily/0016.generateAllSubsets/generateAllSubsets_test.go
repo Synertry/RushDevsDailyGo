@@ -1,12 +1,14 @@
 package main
 
 import (
+	"fmt"
 	"math/rand"
 	"strconv"
 	"testing"
 	"time"
 
-	"github.com/Synertry/GoSysUtils/Math"
+	"github.com/Synertry/GoSysUtils/IO"
+	"github.com/Synertry/GoSysUtils/Math/Int"
 	"github.com/google/go-cmp/cmp"
 )
 
@@ -26,10 +28,18 @@ var (
 func init() {
 	// generate benchmark data
 	for i := -1; i <= maxExpArrLen; i++ {
-		arrLen := Math.IntPow(10, i)
+		arrLen := Int.Pow(10, i)
 		benchmarks[i+1] = benchmark{name: "ArrLen10^" + strconv.Itoa(i), len: arrLen}
 	}
 	benchmarks[maxExpArrLen+2] = benchmark{name: "ArrLen20", len: 20}
+}
+
+func TestMainFunc(t *testing.T) {
+	want := fmt.Sprintf("All generated subsets of slice %v are:\n\t-> %v", sliceOfInts, generateAllSubsets(sliceOfInts))
+	got := IO.GetOutput(main)
+	if got != want {
+		t.Errorf("expected: %s, got: %s", want, got)
+	}
 }
 
 func TestGenerateAllSubsets(t *testing.T) {

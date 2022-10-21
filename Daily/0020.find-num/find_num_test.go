@@ -1,20 +1,30 @@
 package main
 
 import (
+	"fmt"
 	"math"
 	"math/rand"
 	"strconv"
 	"testing"
 	"time"
 
-	"github.com/Synertry/GoSysUtils/Math"
+	"github.com/Synertry/GoSysUtils/IO"
+	"github.com/Synertry/GoSysUtils/Math/Int"
 	"github.com/google/go-cmp/cmp"
 )
 
 var (
-	sliceOfInts []int
-	random      = rand.New(rand.NewSource(time.Now().UnixNano()))
+	resultSliceOfInts []int
+	random            = rand.New(rand.NewSource(time.Now().UnixNano()))
 )
+
+func TestMainFunc(t *testing.T) {
+	want := fmt.Sprintf("In sorted list %v the searched number %d has indices:\n\t-> %v", sliceOfInts, num, find_num(sliceOfInts, num))
+	got := IO.GetOutput(main)
+	if got != want {
+		t.Errorf("expected: %s, got: %s", want, got)
+	}
+}
 
 func TestFind_num(t *testing.T) {
 	tests := map[string]struct {
@@ -83,7 +93,7 @@ func BenchmarkFind_num(b *testing.B) {
 	benchmarks[0] = benchmark{name: "ArrLen3", len: 3} // start case
 
 	for i := 1; i <= maxExpArrLen; i++ {
-		arrLen := Math.IntPow(10, i)
+		arrLen := Int.Pow(10, i)
 		benchmarks[i] = benchmark{name: "ArrLen10^" + strconv.Itoa(i), len: arrLen}
 	}
 
@@ -95,7 +105,7 @@ func BenchmarkFind_num(b *testing.B) {
 			for i := 0; i < b.N; i++ {
 				result = find_num(input, target)
 			}
-			sliceOfInts = result
+			resultSliceOfInts = result
 		})
 	}
 }

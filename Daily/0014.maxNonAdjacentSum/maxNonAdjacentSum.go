@@ -2,9 +2,10 @@ package main
 
 import "fmt"
 
+var sliceOfInts = []int{2, 1, 2, 7, 3}
+
 func main() {
-	sliceOfInts := []int{2, 1, 2, 7, 3}
-	fmt.Printf("Maximum non-adjacent sum of slice %v is:\n\t-> %d\n\n", sliceOfInts, maxNonAdjacentSum(sliceOfInts))
+	fmt.Printf("Maximum non-adjacent sum of slice %v is:\n\t-> %d", sliceOfInts, maxNonAdjacentSum(sliceOfInts))
 }
 
 func maxNonAdjacentSum(elems []int) int {

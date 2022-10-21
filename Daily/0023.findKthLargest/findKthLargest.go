@@ -1,26 +1,30 @@
 package main
 
+import "fmt"
+
+var sliceOfInts = []int{8, 7, 2, 3, 4, 1, 5, 9, 0}
+var num = 3
+
 func main() {
-	sliceOfInts := []int{8, 7, 2, 3, 4, 1, 5, 9, 0}
-	num := 3
-	// fmt.Printf("The %dth largest element in slice %v is:\n\t-> %d\n\n", num, sliceOfInts, findKthLargest(sliceOfInts, num))
-	print("The ", num, "th largest element in slice ")
-	printSliceOfInts(sliceOfInts)
-	println(" is:")
-	print("\t-> ", findKthLargest(sliceOfInts, num))
+	fmt.Printf("The %dth largest element in slice %v is:\n", num, sliceOfInts)
+	fmt.Printf("\t-> %d", findKthLargest(sliceOfInts, num))
+	// print("The ", num, "th largest element in slice ")
+	// printSliceOfInts(sliceOfInts)
+	// println(" is:")
+	// print("\t-> ", findKthLargest(sliceOfInts, num))
 }
 
-// bloat code, but achieves importless code
-func printSliceOfInts(slice []int) {
-	print("[")
-	for i, val := range slice {
-		if i > 0 {
-			print(", ")
-		}
-		print(val)
-	}
-	print("]")
-}
+// // bloat code, but achieves importless code
+// func printSliceOfInts(slice []int) {
+// 	print("[")
+// 	for i, val := range slice {
+// 		if i > 0 {
+// 			print(" ")
+// 		}
+// 		print(val)
+// 	}
+// 	print("]")
+// }
 
 func findKthLargest(arr []int, k int) int {
 	// allocs

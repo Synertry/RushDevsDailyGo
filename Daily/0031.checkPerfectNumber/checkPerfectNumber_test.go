@@ -1,6 +1,11 @@
 package main
 
-import "testing"
+import (
+	"fmt"
+	"testing"
+
+	"github.com/Synertry/GoSysUtils/IO"
+)
 
 var (
 	benchmarks = []struct {
@@ -32,6 +37,14 @@ var (
 )
 
 // ##### Tests #####
+
+func TestMainFunc(t *testing.T) {
+	want := fmt.Sprintf("Number %d is a perfect number:\n\t-> %t", num, checkPerfectNumber(num))
+	got := IO.GetOutput(main)
+	if got != want {
+		t.Errorf("expected: %s, got: %s", want, got)
+	}
+}
 
 func TestCheckPerfectNumberSqrt(t *testing.T) {
 	for name, tc := range tests {

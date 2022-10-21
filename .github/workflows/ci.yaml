@@ -44,14 +44,14 @@ jobs:
 
       - name: Install dependencies
         if: steps.cache.outputs.cache-hit != 'true'
-        run: go get .
+        run: go get ./Daily/...
 
       - name: Verify dependencies
         run: go mod verify
 
       # Run tests for each daily, only test in sub dirs
       - name: Test with the Go CLI
-        run: go test -race ./Daily/...
+        run: go test -v -race ./Daily/...
 
       - name: Static code analysis
         uses: golangci/golangci-lint-action@v3

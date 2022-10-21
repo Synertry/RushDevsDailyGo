@@ -1,12 +1,14 @@
 package main
 
 import (
+	"fmt"
 	"math/rand"
 	"strconv"
 	"testing"
 	"time"
 
-	"github.com/Synertry/GoSysUtils/Math"
+	"github.com/Synertry/GoSysUtils/IO"
+	"github.com/Synertry/GoSysUtils/Math/Int"
 	"github.com/google/go-cmp/cmp"
 )
 
@@ -26,8 +28,16 @@ var (
 func init() {
 	// generate benchmark data
 	for i := 1; i <= maxExpArrLen; i++ {
-		arrLen := Math.IntPow(2, i)
+		arrLen := Int.Pow(2, i)
 		benchmarks[i-1] = benchmark{name: "ArrLen2^" + strconv.Itoa(i), len: arrLen}
+	}
+}
+
+func TestMainFunc(t *testing.T) {
+	want := fmt.Sprintf("In matrix %v the searched value exists:\n\t-> %d %v", mat, num, searchMatrix(mat, num))
+	got := IO.GetOutput(main)
+	if got != want {
+		t.Errorf("expected: %s, got: %s", want, got)
 	}
 }
 
@@ -69,7 +79,7 @@ func BenchmarkSearchMatrix(b *testing.B) {
 				result bool
 			)
 			for i := 0; i < bm.len; i++ { // generate sorted matrix
-				row := make([]int, bm.len/Math.IntPow(2, countDigits(bm.len)))
+				row := make([]int, bm.len/Int.Pow(2, countDigits(bm.len)))
 				for j := 0; j < len(row); j++ { // fill row with ascending numbers from i
 					row[j] = i
 				}

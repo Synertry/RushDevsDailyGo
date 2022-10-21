@@ -2,9 +2,10 @@ package main
 
 import "fmt"
 
+var sliceOfStrings = []string{"tech", "lead", "techlead", "cat", "cats", "dog", "catsdog"}
+
 func main() {
-	sliceOfStrings := []string{"tech", "lead", "techlead", "cat", "cats", "dog", "catsdog"}
-	fmt.Printf("The concatenated words for %v:\n\t-> %v\n\n", sliceOfStrings, findAllConcatenatedWordsInADict(sliceOfStrings))
+	fmt.Printf("The concatenated words for %v:\n\t-> %v", sliceOfStrings, findAllConcatenatedWordsInADict(sliceOfStrings))
 }
 
 func findAllConcatenatedWordsInADict(dict []string) []string {

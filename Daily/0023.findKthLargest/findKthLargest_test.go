@@ -1,13 +1,15 @@
 package main
 
 import (
+	"fmt"
 	"math/rand"
 	"sort"
 	"strconv"
 	"testing"
 	"time"
 
-	"github.com/Synertry/GoSysUtils/Math"
+	"github.com/Synertry/GoSysUtils/IO"
+	"github.com/Synertry/GoSysUtils/Math/Int"
 	"github.com/google/go-cmp/cmp"
 )
 
@@ -29,8 +31,19 @@ func init() {
 	benchmarks[0] = benchmark{name: "ArrLen2", len: 2} // start case
 
 	for i := 1; i <= maxExpArrLen; i++ {
-		arrLen := Math.IntPow(10, i)
+		arrLen := Int.Pow(10, i)
 		benchmarks[i] = benchmark{name: "ArrLen10^" + strconv.Itoa(i), len: arrLen}
+	}
+}
+
+func TestMainFunc(t *testing.T) {
+	copySlice := make([]int, len(sliceOfInts))
+	copy(copySlice, sliceOfInts)
+	// want := Str.Concat(fmt.Sprintf("The %dth largest element in slice %v is:\n", num, copySlice), fmt.Sprintf("\t-> %d", findKthLargest(copySlice, num)))
+	want := fmt.Sprintf("The %dth largest element in slice %v is:\n\t-> %d", num, sliceOfInts, findKthLargest(sliceOfInts, num))
+	got := IO.GetOutput(main)
+	if got != want {
+		t.Errorf("expected:\n%s\n, got:\n%s", want, got) // <- easier debugging with distinct line breaks
 	}
 }
 

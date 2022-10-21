@@ -1,13 +1,15 @@
 package main
 
 import (
+	"fmt"
 	"math/rand"
 	"sort"
 	"strconv"
 	"testing"
 	"time"
 
-	"github.com/Synertry/GoSysUtils/Math"
+	"github.com/Synertry/GoSysUtils/IO"
+	"github.com/Synertry/GoSysUtils/Math/Int"
 	"github.com/google/go-cmp/cmp"
 )
 
@@ -22,25 +24,32 @@ var (
 	resultSliceOfInts []int
 	random            = rand.New(rand.NewSource(time.Now().UnixNano()))
 	benchmarks        = make([]benchmark, maxExpArrLen) // do not use maps! Order will be randomized
-)
-
-func init() {
-	// generate benchmark data
-	for i := 1; i <= maxExpArrLen; i++ {
-		arrLen := Math.IntPow(2, i)
-		benchmarks[i-1] = benchmark{name: "ArrLen2^" + strconv.Itoa(i), len: arrLen}
-	}
-}
-
-func TestIntersection(t *testing.T) {
-	tests := map[string]struct {
+	tests             = map[string]struct {
 		input [][]int
 		want  []int
 	}{
 		"intro":  {input: [][]int{{1, 2, 3, 4}, {2, 4, 6, 8}, {3, 4, 5}}, want: []int{4}},
 		"intro2": {input: [][]int{{1, 2, 3, 4}, {1, 2, 4, 6, 8}, {1, 3, 4, 5}}, want: []int{1, 4}},
 	}
+)
 
+func init() {
+	// generate benchmark data
+	for i := 1; i <= maxExpArrLen; i++ {
+		arrLen := Int.Pow(2, i)
+		benchmarks[i-1] = benchmark{name: "ArrLen2^" + strconv.Itoa(i), len: arrLen}
+	}
+}
+
+func TestMainFunc(t *testing.T) {
+	want := fmt.Sprintf("Intersections of %#v are:\n\t-> %v", mat, intersection(mat))
+	got := IO.GetOutput(main)
+	if got != want {
+		t.Errorf("expected: %s, got: %s", want, got)
+	}
+}
+
+func TestIntersection(t *testing.T) {
 	for name, tc := range tests {
 		t.Run(name, func(t *testing.T) {
 			got := intersection(tc.input)
@@ -70,7 +79,7 @@ func BenchmarkIntersection(b *testing.B) {
 				result []int
 			)
 			for i := 0; i < bm.len; i++ { // generate sorted matrix
-				row := make([]int, bm.len/Math.IntPow(2, countDigits(bm.len)))
+				row := make([]int, bm.len/Int.Pow(2, Int.CountDigits(bm.len)))
 				for j := 0; j < len(row); j++ { // fill row with ascending numbers from i
 					row[j] = i
 				}
@@ -83,22 +92,4 @@ func BenchmarkIntersection(b *testing.B) {
 			resultSliceOfInts = result
 		})
 	}
-}
-
-// countDigits returns the number of digits in a number
-func countDigits(num int) (count int) {
-	num = abs(num)
-	for num > 0 {
-		num /= 10
-		count++
-	}
-	return
-}
-
-// abs returns the absolute value of a number
-func abs(num int) int {
-	if num < 0 {
-		return -num
-	}
-	return num
 }

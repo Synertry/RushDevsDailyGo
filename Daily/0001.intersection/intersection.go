@@ -2,10 +2,10 @@ package main
 
 import "fmt"
 
-func main() {
-	mat := [][]int{{1, 2, 3, 4}, {2, 4, 6, 8}, {3, 4, 5}}
-	fmt.Printf("Intersections of %#v are:\n\t-> %v\n\n", mat, intersection(mat))
+var mat = [][]int{{1, 2, 3, 4}, {2, 4, 6, 8}, {3, 4, 5}}
 
+func main() {
+	fmt.Printf("Intersections of %#v are:\n\t-> %v", mat, intersection(mat))
 }
 
 // intersection returns the intersection of a list of []int

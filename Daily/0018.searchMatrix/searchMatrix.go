@@ -2,14 +2,17 @@ package main
 
 import "fmt"
 
-func main() {
-	mat := [][]int{
+var (
+	mat = [][]int{
 		{1, 3, 5, 8},
 		{10, 11, 15, 16},
 		{24, 27, 30, 31},
 	}
-	num := 120
-	fmt.Printf("In matrix %v the searched value exists:\n\t-> %d %v\n\n", mat, num, searchMatrix(mat, num))
+	num = 120
+)
+
+func main() {
+	fmt.Printf("In matrix %v the searched value exists:\n\t-> %d %v", mat, num, searchMatrix(mat, num))
 }
 
 // searchMatrix finds a target value in a sorted 2D matrix via binary search

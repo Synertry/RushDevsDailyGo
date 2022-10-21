@@ -1,15 +1,25 @@
 package main
 
 import (
+	"fmt"
 	"strconv"
 	"testing"
 
-	"github.com/Synertry/GoSysUtils/Math"
+	"github.com/Synertry/GoSysUtils/IO"
+	"github.com/Synertry/GoSysUtils/Math/Int"
 	"github.com/Synertry/GoSysUtils/Slice"
 	"github.com/Synertry/GoSysUtils/Str"
 )
 
 var resultBool bool
+
+func TestMainFunc(t *testing.T) {
+	want := fmt.Sprintf("Can spell %q from %v:\n\t-> %t", word, sliceOfStrings, canSpell(sliceOfStrings, word))
+	got := IO.GetOutput(main)
+	if got != want {
+		t.Errorf("expected: %s, got: %s", want, got)
+	}
+}
 
 func TestCanSpell(t *testing.T) {
 	tests := map[string]struct {
@@ -49,7 +59,7 @@ func BenchmarkCanSpell(b *testing.B) {
 	benchmarks := make([]benchmark, maxExpDictLen+2) // + 2 for empty floor(10^-1) and single 10^0 -> 1
 
 	for i := -1; i <= maxExpDictLen; i++ { // -1 as start, because substraction is more costly than addition
-		dictLen := Math.IntPow(10, i)
+		dictLen := Int.Pow(10, i)
 		benchmarks[i+1] = benchmark{name: "DictLen10^" + strconv.Itoa(i), len: dictLen}
 	}
 

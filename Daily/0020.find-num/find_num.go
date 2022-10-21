@@ -2,10 +2,13 @@ package main
 
 import "fmt"
 
+var (
+	sliceOfInts = []int{1, 1, 3, 5, 7}
+	num         = 1
+)
+
 func main() {
-	sliceOfInts := []int{1, 1, 3, 5, 7}
-	num := 1
-	fmt.Printf("In sorted list %v the searched number %d has indices:\n\t-> %v\n\n", sliceOfInts, num, find_num(sliceOfInts, num))
+	fmt.Printf("In sorted list %v the searched number %d has indices:\n\t-> %v", sliceOfInts, num, find_num(sliceOfInts, num))
 }
 
 func find_num(list []int, target int) []int {

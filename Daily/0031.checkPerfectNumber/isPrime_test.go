@@ -4,7 +4,7 @@ import (
 	"strconv"
 	"testing"
 
-	"github.com/Synertry/GoSysUtils/Math"
+	"github.com/Synertry/GoSysUtils/Math/Int"
 )
 
 type benchmarksPrime struct {
@@ -32,7 +32,7 @@ var (
 
 func init() {
 	for i := 0; i <= maxArrExpLen; i++ {
-		inputNum := Math.IntPow(10, i)
+		inputNum := Int.Pow(10, i)
 		benchmarksPrimes[i] = benchmarksPrime{name: "10^" + strconv.Itoa(i), len: inputNum}
 	}
 }

@@ -5,10 +5,13 @@ import (
 	"sort"
 )
 
+var (
+	sliceOfInts = []int{2, 1, -5, 4}
+	num         = -1
+)
+
 func main() {
-	sliceOfInts := []int{2, 1, -5, 4}
-	num := -1
-	fmt.Printf("Closest 3sum to %d in %v is:\n\t-> %v\n\n", num, sliceOfInts, closest_3sum(sliceOfInts, num))
+	fmt.Printf("Closest 3sum to %d in %v is:\n\t-> %v", num, sliceOfInts, closest_3sum(sliceOfInts, num))
 }
 
 func closest_3sum(nums []int, target int) (threeNums []int) {

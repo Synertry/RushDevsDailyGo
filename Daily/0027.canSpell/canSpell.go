@@ -2,10 +2,13 @@ package main
 
 import "fmt"
 
+var (
+	sliceOfStrings = []string{"a", "b", "c", "d", "e", "f"}
+	word           = "bed"
+)
+
 func main() {
-	sliceOfStrings := []string{"a", "b", "c", "d", "e", "f"}
-	word := "bed"
-	fmt.Printf("Can spell %q from %v:\n\t-> %t\n\n", word, sliceOfStrings, canSpell(sliceOfStrings, word))
+	fmt.Printf("Can spell %q from %v:\n\t-> %t", word, sliceOfStrings, canSpell(sliceOfStrings, word))
 }
 
 // canSpell returns true if the letters in the array can be used to spell the string.

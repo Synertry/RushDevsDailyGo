@@ -2,9 +2,10 @@ package main
 
 import "fmt"
 
+var num = 28
+
 func main() {
-	num := 28
-	fmt.Printf("Number %d is a perfect number:\n\t-> %t\n\n", num, checkPerfectNumber(num))
+	fmt.Printf("Number %d is a perfect number:\n\t-> %t", num, checkPerfectNumber(num))
 }
 
 func checkPerfectNumberSqrt(num int) bool {

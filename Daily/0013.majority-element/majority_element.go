@@ -2,9 +2,10 @@ package main
 
 import "fmt"
 
+var sliceOfInts = []int{3, 5, 3, 3, 2, 4, 3}
+
 func main() {
-	sliceOfInts := []int{3, 5, 3, 3, 2, 4, 3}
-	fmt.Printf("Majority element of slice %v is:\n\t-> %d\n\n", sliceOfInts, majority_element(sliceOfInts))
+	fmt.Printf("Majority element of slice %v is:\n\t-> %d", sliceOfInts, majority_element(sliceOfInts))
 }
 
 func majority_element(elems []int) int {

@@ -1,14 +1,24 @@
 package main
 
 import (
+	"fmt"
 	"strconv"
 	"testing"
 
-	"github.com/Synertry/GoSysUtils/Math"
+	"github.com/Synertry/GoSysUtils/IO"
+	"github.com/Synertry/GoSysUtils/Math/Int"
 	"github.com/Synertry/GoSysUtils/Str"
 )
 
 var resultBool bool
+
+func TestMainFunc(t *testing.T) {
+	want := fmt.Sprintf("Can create a palindrome if we remove a letter from %q:\n\t-> %t", word, create_palindrome(word))
+	got := IO.GetOutput(main)
+	if got != want {
+		t.Errorf("expected: %s, got: %s", want, got)
+	}
+}
 
 func TestCreate_palindrome(t *testing.T) {
 	tests := map[string]struct {
@@ -48,7 +58,7 @@ func BenchmarkCreate_palindrome(b *testing.B) {
 	benchmarks := make([]benchmark, maxExpStrLen+1) // + 1 for single 10^0 -> 1
 
 	for i := 0; i <= maxExpStrLen; i++ { // -1 as start, because substraction is more costly than addition
-		strLen := Math.IntPow(10, i)
+		strLen := Int.Pow(10, i)
 		benchmarks[i] = benchmark{name: "StrLen10^" + strconv.Itoa(i), len: strLen}
 	}
 

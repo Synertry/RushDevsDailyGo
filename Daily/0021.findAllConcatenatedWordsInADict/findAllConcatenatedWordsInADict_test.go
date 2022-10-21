@@ -1,15 +1,25 @@
 package main
 
 import (
+	"fmt"
 	"strconv"
 	"testing"
 
-	"github.com/Synertry/GoSysUtils/Math"
+	"github.com/Synertry/GoSysUtils/IO"
+	"github.com/Synertry/GoSysUtils/Math/Int"
 	"github.com/Synertry/GoSysUtils/Slice"
 	"github.com/google/go-cmp/cmp"
 )
 
-var sliceOfString []string
+var resultSliceOfString []string
+
+func TestMainFunc(t *testing.T) {
+	want := fmt.Sprintf("The concatenated words for %v:\n\t-> %v", sliceOfStrings, findAllConcatenatedWordsInADict(sliceOfStrings))
+	got := IO.GetOutput(main)
+	if got != want {
+		t.Errorf("expected: %s, got: %s", want, got)
+	}
+}
 
 func TestFindAllConcatenatedWordsInADict(t *testing.T) {
 	tests := map[string]struct {
@@ -45,7 +55,7 @@ func BenchmarkFindAllConcatenatedWordsInADict(b *testing.B) {
 	benchmarks := make([]benchmark, maxExpDictLen+2) // + 2 for empty floor(10^-1) and single 10^0 -> 1
 
 	for i := -1; i <= maxExpDictLen; i++ { // -1 as start, because substraction is more costly than addition
-		dictLen := Math.IntPow(10, i)
+		dictLen := Int.Pow(10, i)
 		benchmarks[i+1] = benchmark{name: "DictLen10^" + strconv.Itoa(i), len: dictLen}
 	}
 
@@ -57,7 +67,7 @@ func BenchmarkFindAllConcatenatedWordsInADict(b *testing.B) {
 			for i := 0; i < b.N; i++ {
 				result = findAllConcatenatedWordsInADict(input)
 			}
-			sliceOfString = result
+			resultSliceOfString = result
 		})
 	}
 }
