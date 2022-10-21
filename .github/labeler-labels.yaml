@@ -2,13 +2,15 @@
 "github/workflows": .github/workflows/*
 "github": .github/*
 
+"analyzer/deepsource": .deepsource.toml
+
 # changes to frontpage or license
 "repo/readme": ./README.md
 "repo/license": ./LICENSE
 
 # changes to root folder
 "repo/root":
-- any: ['./main.go', './go.mod', './go.sum', './.gitignore', './gitattributes']
+- any: ['./go.mod', './go.sum', './.gitignore', './gitattributes']
 
 # Add dailies
 "daily":

@@ -6,7 +6,7 @@ on:
     branches-ignore:
       - 'main'
       - 'staging'
-  
+
 jobs:
   delete-branch:
     name: Delete merged PR branch
