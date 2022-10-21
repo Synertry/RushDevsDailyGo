@@ -24,13 +24,6 @@ var (
 	resultSliceOfInts []int
 	random            = rand.New(rand.NewSource(time.Now().UnixNano()))
 	benchmarks        = make([]benchmark, maxExpArrLen) // do not use maps! Order will be randomized
-	tests             = map[string]struct {
-		input [][]int
-		want  []int
-	}{
-		"intro":  {input: [][]int{{1, 2, 3, 4}, {2, 4, 6, 8}, {3, 4, 5}}, want: []int{4}},
-		"intro2": {input: [][]int{{1, 2, 3, 4}, {1, 2, 4, 6, 8}, {1, 3, 4, 5}}, want: []int{1, 4}},
-	}
 )
 
 func init() {
@@ -50,6 +43,14 @@ func TestMainFunc(t *testing.T) {
 }
 
 func TestIntersection(t *testing.T) {
+	tests := map[string]struct {
+		input [][]int
+		want  []int
+	}{
+		"intro":  {input: [][]int{{1, 2, 3, 4}, {2, 4, 6, 8}, {3, 4, 5}}, want: []int{4}},
+		"intro2": {input: [][]int{{1, 2, 3, 4}, {1, 2, 4, 6, 8}, {1, 3, 4, 5}}, want: []int{1, 4}},
+	}
+
 	for name, tc := range tests {
 		t.Run(name, func(t *testing.T) {
 			got := intersection(tc.input)

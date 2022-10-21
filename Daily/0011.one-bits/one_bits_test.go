@@ -25,7 +25,7 @@ var (
 
 func init() {
 	// generate benchmark data
-	for i := 0; i <= maxExp; i++ { // -1 as start, because substraction is more costly than addition
+	for i := 0; i <= maxExp; i++ {
 		inputNum := Int.Pow(2, i)
 		benchmarks[i] = benchmark{name: "2^" + strconv.Itoa(i), input: inputNum}
 	}
