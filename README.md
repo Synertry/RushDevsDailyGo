@@ -13,7 +13,7 @@
 [![DeepSource Repo](https://static.deepsource.io/deepsource-badge-light-mini.svg)](https://deepsource.io/gh/Synertry/RushDevsDailyGo)
 [![DeepSource Active Issues](https://deepsource.io/gh/Synertry/RushDevsDailyGo.svg/?label=active+issues&show_trend=true&token=A5DevG3b4Ave2H8Cu6tliGkF)](https://deepsource.io/gh/Synertry/RushDevsDailyGo/?ref=repository-badge)
 
-### About
+## About
 
 Go Code for dailies challenges from the [Discord server RushDevs](https://discord.gg/ABAkZeyr9A) in Channel [🧠 | daily-aufgaben](https://discord.com/channels/943265457727766608/1018218760089378828)<br>
 Here is the invite link to join the server:
@@ -25,8 +25,9 @@ The solutions are in submittable form, so you can copy&paste it via dm to the re
 Some dailies do have additional functions to signify the best possible solution.
 
 I have created this repo to learn more about alogrithms as well as to fiddle with the CI/CD provided by GitHub Actions.
+The **tests and CI behind this repo are far more sophisticated than the submissions** for the dailies, so be sure to check them out.
 
-### Dailies
+## Dailies
 
 The numbering is from the Discord channel, some numbers are missing, because those dailies were HTML/CSS challenges rather than alogrithm challenges.
 
@@ -52,3 +53,8 @@ The numbering is from the Discord channel, some numbers are missing, because tho
 | [28](https://github.com/Synertry/RushDevsDailyGo/tree/main/Daily/0028.create-palindrome) | [create_palindrome](https://github.com/Synertry/RushDevsDailyGo/blob/main/Daily/0028.create-palindrome/create-palindrome.go) | ✔️ | ✔️ | ✔️ | O(n) | O(n) | without recursion               |
 | [31](https://github.com/Synertry/RushDevsDailyGo/tree/main/Daily/0031.checkPerfectNumber) | [checkPerfectNumber](https://github.com/Synertry/RushDevsDailyGo/blob/main/Daily/0031.checkPerfectNumber/checkPerfectNumber.go) | ✔️ | ✔️ | ✔️ | O(√(log(n))) | O(1) | ❤                               |
 | [32](https://github.com/Synertry/RushDevsDailyGo/tree/main/Daily/0032.frac-to-dec) | [frac_to_dec](https://github.com/Synertry/RushDevsDailyGo/blob/main/Daily/0032.frac-to-dec/frac-to-dec.go) | ✔️ | ✔️ | ✔️ | O(?) | | Hard w/o recursion |
+
+## License
+ - Google:
+   - Coding language [Go](https://go.dev/)
+   - module [go-cmp](https://github.com/google/go-cmp) for diff beautifier in comparing test outputs
