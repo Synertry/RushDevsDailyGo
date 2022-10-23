@@ -19,6 +19,7 @@
 [![DeepSource Repo](https://static.deepsource.io/deepsource-badge-light-mini.svg)](https://deepsource.io/gh/Synertry/RushDevsDailyGo)
 [![DeepSource Active Issues](https://deepsource.io/gh/Synertry/RushDevsDailyGo.svg/?label=active+issues&show_trend=true&token=A5DevG3b4Ave2H8Cu6tliGkF)](https://deepsource.io/gh/Synertry/RushDevsDailyGo/?ref=repository-badge)
 
+> "DevOps is fun until something breaks"
 
 ## About
 
