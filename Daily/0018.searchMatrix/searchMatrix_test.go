@@ -2,12 +2,12 @@ package main
 
 import (
 	"fmt"
-	"math/rand"
 	"strconv"
 	"testing"
 	"time"
 
 	"github.com/Synertry/GoSysUtils/IO"
+	"github.com/Synertry/GoSysUtils/Math"
 	"github.com/Synertry/GoSysUtils/Math/Int"
 	"github.com/google/go-cmp/cmp"
 )
@@ -21,7 +21,7 @@ const maxExpArrLen = 9
 
 var (
 	resultBool bool
-	random     = rand.New(rand.NewSource(time.Now().UnixNano()))
+	random     = Math.GetRand()
 	benchmarks = make([]benchmark, maxExpArrLen) // do not use maps! Order will be randomized
 )
 

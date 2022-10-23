@@ -4,14 +4,16 @@
 [![License](https://img.shields.io/badge/License-Boost_1.0-lightblue.svg)](https://www.boost.org/LICENSE_1_0.txt)
 ![GitHub go.mod Go version](https://img.shields.io/github/go-mod/go-version/Synertry/RushDevsDailyGo?logo=Go)
 [![CI](https://github.com/Synertry/RushDevsDailyGo/actions/workflows/ci.yaml/badge.svg?branch=staging)](https://github.com/Synertry/RushDevsDailyGo/actions/workflows/ci.yaml?query=branch%3Astaging)
-<br>
-[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FSynertry%2FRushDevsDailyGo.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2FSynertry%2FRushDevsDailyGo?ref=badge_shield)
 [![codecov](https://codecov.io/gh/Synertry/RushDevsDailyGo/branch/staging/graph/badge.svg?token=YGEVWAPDKZ)](https://codecov.io/gh/Synertry/RushDevsDailyGo)
 [![Go Report Card](https://goreportcard.com/badge/github.com/Synertry/RushDevsDailyGo)](https://goreportcard.com/report/github.com/Synertry/RushDevsDailyGo)
 [![CodeFactor](https://www.codefactor.io/repository/github/synertry/rushdevsdailygo/badge)](https://www.codefactor.io/repository/github/synertry/rushdevsdailygo)
 <br>
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FSynertry%2FRushDevsDailyGo.svg?type=small)](https://app.fossa.com/projects/git%2Bgithub.com%2FSynertry%2FRushDevsDailyGo?ref=badge_small)
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FSynertry%2FRushDevsDailyGo.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2FSynertry%2FRushDevsDailyGo?ref=badge_shield)
+<br>
 [![DeepSource Repo](https://static.deepsource.io/deepsource-badge-light-mini.svg)](https://deepsource.io/gh/Synertry/RushDevsDailyGo)
 [![DeepSource Active Issues](https://deepsource.io/gh/Synertry/RushDevsDailyGo.svg/?label=active+issues&show_trend=true&token=A5DevG3b4Ave2H8Cu6tliGkF)](https://deepsource.io/gh/Synertry/RushDevsDailyGo/?ref=repository-badge)
+
 
 ## About
 
@@ -55,6 +57,12 @@ The numbering is from the Discord channel, some numbers are missing, because tho
 | [32](https://github.com/Synertry/RushDevsDailyGo/tree/main/Daily/0032.frac-to-dec) | [frac_to_dec](https://github.com/Synertry/RushDevsDailyGo/blob/main/Daily/0032.frac-to-dec/frac-to-dec.go) | ✔️ | ✔️ | ✔️ | O(?) | | Hard w/o recursion |
 
 ## License
- - Google:
+  
+This repository is licensed under the Boost Software License 1.0. See [LICENSE](https://github.com/Synertry/RushDevsDailyGo/blob/main/LICENSE)
+
+Further attribution belongs to:
+ - Synertry
+   - [GoSysUtils](https://github.com/Synertry/GoSysUtils)
+ - Google (The Go Authors)
    - Coding language [Go](https://go.dev/)
    - module [go-cmp](https://github.com/google/go-cmp) for diff beautifier in comparing test outputs

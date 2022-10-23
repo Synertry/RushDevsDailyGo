@@ -15,7 +15,7 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  precheck: # Skip CI if only a README.md is changed, but mark as successful so PR succeeds to protected main branch. Huge bloat logic, becase GitHub does not support exceptions, in that case.
+  precheck: # Skip CI if only a README.md is changed, but mark as successful so PR succeeds to protected main branch. Huge bloat logic, because GitHub does not support exceptions, in that case.
     name: Precheck
     runs-on: ubuntu-latest
     outputs:

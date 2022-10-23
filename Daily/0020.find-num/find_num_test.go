@@ -3,19 +3,19 @@ package main
 import (
 	"fmt"
 	"math"
-	"math/rand"
 	"strconv"
 	"testing"
 	"time"
 
 	"github.com/Synertry/GoSysUtils/IO"
+	"github.com/Synertry/GoSysUtils/Math"
 	"github.com/Synertry/GoSysUtils/Math/Int"
 	"github.com/google/go-cmp/cmp"
 )
 
 var (
 	resultSliceOfInts []int
-	random            = rand.New(rand.NewSource(time.Now().UnixNano()))
+	random            = Math.GetRand()
 )
 
 func TestMainFunc(t *testing.T) {

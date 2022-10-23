@@ -19,7 +19,7 @@ const maxExpArrLen = 7
 
 var (
 	resultInt int
-	// random     = rand.New(rand.NewSource(time.Now().UnixNano()))
+	// random     = Math.GetRand()
 	benchmarks = make([]benchmark, maxExpArrLen+1) // do not use maps! Order will be randomized; + 1 for 2^0
 )
 
