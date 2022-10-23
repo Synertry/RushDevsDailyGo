@@ -46,7 +46,7 @@ func TestMainFunc(t *testing.T) {
 	}
 }
 
-func testCheckPerfectNumber(t *testing.T, fn func(int) bool) {
+func coreTestCheckPerfectNumber(t *testing.T, fn func(int) bool) {
 	for name, tc := range tests {
 		t.Run(name, func(t *testing.T) {
 			got := fn(tc.input)
@@ -61,16 +61,16 @@ func testCheckPerfectNumber(t *testing.T, fn func(int) bool) {
 }
 
 func TestCheckPerfectNumberSqrt(t *testing.T) {
-	testCheckPerfectNumber(t, checkPerfectNumberSqrt)
+	coreTestCheckPerfectNumber(t, checkPerfectNumberSqrt)
 }
 
 func TestCheckPerfectNumber(t *testing.T) {
-	testCheckPerfectNumber(t, checkPerfectNumber)
+	coreTestCheckPerfectNumber(t, checkPerfectNumber)
 }
 
 // ##### Benchmarks #####
 
-func benchmarkCheckPerfectNumber(b *testing.B, fn func(int) bool) {
+func coreBenchmarkCheckPerfectNumber(b *testing.B, fn func(int) bool) {
 	for _, bm := range benchmarks {
 		b.Run(bm.name, func(b *testing.B) {
 			b.ReportAllocs()
@@ -85,9 +85,9 @@ func benchmarkCheckPerfectNumber(b *testing.B, fn func(int) bool) {
 }
 
 func BenchmarkCheckPerfectNumberSqrt(b *testing.B) {
-	benchmarkCheckPerfectNumber(b, checkPerfectNumberSqrt)
+	coreBenchmarkCheckPerfectNumber(b, checkPerfectNumberSqrt)
 }
 
 func BenchmarkCheckPerfectNumber(b *testing.B) {
-	benchmarkCheckPerfectNumber(b, checkPerfectNumber)
+	coreBenchmarkCheckPerfectNumber(b, checkPerfectNumber)
 }

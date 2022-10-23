@@ -37,7 +37,7 @@ func init() {
 	}
 }
 
-func testIsPrime(t *testing.T, fn func(int) bool) {
+func coreTestIsPrime(t *testing.T, fn func(int) bool) {
 	for name, tcP := range testsPrimes {
 		t.Run(name, func(t *testing.T) {
 			if got := fn(tcP.input); got != tcP.want {
@@ -48,15 +48,15 @@ func testIsPrime(t *testing.T, fn func(int) bool) {
 }
 
 func TestIsPrime(t *testing.T) {
-	testIsPrime(t, isPrime)
+	coreTestIsPrime(t, isPrime)
 }
 
 func TestIsPrimeBaillePSW(t *testing.T) {
-	testIsPrime(t, isPrimeBaillePSW)
+	coreTestIsPrime(t, isPrimeBaillePSW)
 }
 
 func TestIsPrimeMillerRabin(t *testing.T) {
-	testIsPrime(t, isPrimeMillerRabin)
+	coreTestIsPrime(t, isPrimeMillerRabin)
 }
 
 func benchmarkIsPrime(b *testing.B, fn func(int) bool) {

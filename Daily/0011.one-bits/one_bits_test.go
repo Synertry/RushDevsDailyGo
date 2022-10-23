@@ -41,7 +41,7 @@ func TestMainFunc(t *testing.T) {
 	}
 }
 
-func testOne_bits(t *testing.T, fn func(int) int) {
+func coreTestOne_bits(t *testing.T, fn func(int) int) {
 	for i := 0; i < maxTestSize; i++ {
 		std := bits.OnesCount64(uint64(i))
 		res := fn(i)
@@ -52,20 +52,20 @@ func testOne_bits(t *testing.T, fn func(int) int) {
 }
 
 func TestOne_bits(t *testing.T) {
-	testOne_bits(t, one_bits)
+	coreTestOne_bits(t, one_bits)
 }
 
 func TestOne_bitsNonBitOps(t *testing.T) {
-	testOne_bits(t, one_bitsNonBitOps)
+	coreTestOne_bits(t, one_bitsNonBitOps)
 }
 
 func TestOne_bitsO1(t *testing.T) {
-	testOne_bits(t, one_bitsO1)
+	coreTestOne_bits(t, one_bitsO1)
 }
 
 // ##### Benchmarks #####
 
-func benchmarkOne_bits(b *testing.B, fn func(int) int) {
+func coreBenchmarkOne_bits(b *testing.B, fn func(int) int) {
 	for _, bm := range benchmarks {
 		b.Run(bm.name, func(b *testing.B) {
 			cnt, input := 0, bm.input
@@ -79,20 +79,20 @@ func benchmarkOne_bits(b *testing.B, fn func(int) int) {
 }
 
 func BenchmarkOne_bits(b *testing.B) {
-	benchmarkOne_bits(b, one_bits)
+	coreBenchmarkOne_bits(b, one_bits)
 }
 
 func BenchmarkOne_bitsNonBitOps(b *testing.B) {
-	benchmarkOne_bits(b, one_bitsNonBitOps)
+	coreBenchmarkOne_bits(b, one_bitsNonBitOps)
 }
 
 func BenchmarkOne_bitsO1(b *testing.B) {
-	benchmarkOne_bits(b, one_bitsO1)
+	coreBenchmarkOne_bits(b, one_bitsO1)
 }
 
 func BenchmarkBitsOnesCount(b *testing.B) {
 	bitsOnesCount := func(num int) int {
 		return bits.OnesCount(uint(num))
 	}
-	benchmarkOne_bits(b, bitsOnesCount)
+	coreBenchmarkOne_bits(b, bitsOnesCount)
 }
