@@ -162,6 +162,7 @@ jobs:
         with:
           # The report file must be there, otherwise Code Climate won't find it
           coverageCommand: go test -v -race -vet off -covermode atomic -coverprofile coverage.out ./Daily/...
+          coverageLocations: ./coverage.out
 
       - name: Report test coverage to Foresight
         uses: runforesight/foresight-test-kit-action@v1
