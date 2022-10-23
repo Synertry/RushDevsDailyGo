@@ -42,6 +42,12 @@ jobs:
       fail-fast: true # Cancel all jobs if one fails
 
     steps:
+      - name: Collect Workflow Telemetry w/ Foresight
+        uses: runforesight/foresight-workflow-kit-action@v1
+        if: always() && needs.precheck.outputs.doc_only != 'true'
+        with:
+          api_key: ${{ secrets.FORESIGHT_API_KEY }}
+
       - name: Checkout code
         if: needs.precheck.outputs.doc_only != 'true'
         uses: actions/checkout@v3.1.0
@@ -70,7 +76,16 @@ jobs:
       # Run tests for each daily, only test in sub dirs
       - name: Test with the Go CLI
         if: needs.precheck.outputs.doc_only != 'true'
-        run: go test -v -race ./Daily/...
+        run: go test -v -race -json ./Daily/... > ./test-report.json || true
+
+      - name: Analyze Test and/or Coverage Results
+        if: always() && needs.precheck.outputs.doc_only != 'true'
+        uses: runforesight/foresight-test-kit-action@v1
+        with:
+          api_key: ${{ secrets.FORESIGHT_API_KEY }}
+          test_framework: golang
+          test_format: json
+          test_path: ./test-report.json
 
       - name: Static code analysis
         if: needs.precheck.outputs.doc_only != 'true'
@@ -94,6 +109,12 @@ jobs:
       matrix:
         go-version: [ '1.19.x' ]
     steps:
+      - name: Collect Workflow Telemetry w/ Foresight
+        uses: runforesight/foresight-workflow-kit-action@v1
+        if: always() && needs.precheck.outputs.doc_only != 'true'
+        with:
+          api_key: ${{ secrets.FORESIGHT_API_KEY }}
+
       - name: Checkout code
         if: needs.precheck.outputs.doc_only != 'true'
         uses: actions/checkout@v3.1.0
@@ -132,9 +153,23 @@ jobs:
           deny-licenses: LGPL-2.0, BSD-2-Clause, Apache-1.1, Apache-2.0
           # allow-licenses: MIT, BSL-1.0, BSD-3-CLAUSE, GPL-3.0
 
-      - name: Generate Code Coverage
+      - name: Generate Code Coverage & report to Codeclimate
         if: needs.precheck.outputs.doc_only != 'true'
-        run: go test -v -race -vet off -covermode atomic -coverprofile coverage.out ./Daily/...
+        uses: paambaati/codeclimate-action@v3.2.0
+        env:
+          # Set CC_TEST_REPORTER_ID as secret of your repo
+          CC_TEST_REPORTER_ID: ${{secrets.CC_TEST_REPORTER_ID}}
+        with:
+          # The report file must be there, otherwise Code Climate won't find it
+          coverageCommand: go test -v -race -vet off -covermode atomic -coverprofile coverage.out ./Daily/...
+
+      - name: Report test coverage to Foresight
+        uses: runforesight/foresight-test-kit-action@v1
+        if: always() && needs.precheck.outputs.doc_only != 'true'
+        with:
+          api_key: ${{ secrets.FORESIGHT_API_KEY }}
+          coverage_format: golang
+          coverage_path: ./coverage.out
 
       - name: Report test coverage to Codecov
         if: needs.precheck.outputs.doc_only != 'true'

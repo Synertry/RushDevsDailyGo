@@ -4,9 +4,15 @@
 [![License](https://img.shields.io/badge/License-Boost_1.0-lightblue.svg)](https://www.boost.org/LICENSE_1_0.txt)
 ![GitHub go.mod Go version](https://img.shields.io/github/go-mod/go-version/Synertry/RushDevsDailyGo?logo=Go)
 [![CI](https://github.com/Synertry/RushDevsDailyGo/actions/workflows/ci.yaml/badge.svg?branch=staging)](https://github.com/Synertry/RushDevsDailyGo/actions/workflows/ci.yaml?query=branch%3Astaging)
-[![codecov](https://codecov.io/gh/Synertry/RushDevsDailyGo/branch/staging/graph/badge.svg?token=YGEVWAPDKZ)](https://codecov.io/gh/Synertry/RushDevsDailyGo)
 [![Go Report Card](https://goreportcard.com/badge/github.com/Synertry/RushDevsDailyGo)](https://goreportcard.com/report/github.com/Synertry/RushDevsDailyGo)
 [![CodeFactor](https://www.codefactor.io/repository/github/synertry/rushdevsdailygo/badge)](https://www.codefactor.io/repository/github/synertry/rushdevsdailygo)
+[![Maintainability](https://api.codeclimate.com/v1/badges/919b7d29e66bf0d364e3/maintainability)](https://codeclimate.com/github/Synertry/RushDevsDailyGo/maintainability)
+<br>
+[![codecov](https://codecov.io/gh/Synertry/RushDevsDailyGo/branch/staging/graph/badge.svg?token=YGEVWAPDKZ)](https://codecov.io/gh/Synertry/RushDevsDailyGo)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/919b7d29e66bf0d364e3/test_coverage)](https://codeclimate.com/github/Synertry/RushDevsDailyGo/test_coverage)
+[![Foresight Docs](https://api-public.service.runforesight.com/api/v1/badge/test?repoId=7d9a782d-7215-4997-9df1-d39234974056)](https://docs.runforesight.com/)
+[![Foresight Docs](https://api-public.service.runforesight.com/api/v1/badge/success?repoId=7d9a782d-7215-4997-9df1-d39234974056)](https://docs.runforesight.com/)
+[![Foresight Docs](https://api-public.service.runforesight.com/api/v1/badge/utilization?repoId=7d9a782d-7215-4997-9df1-d39234974056)](https://docs.runforesight.com/)
 <br>
 [![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FSynertry%2FRushDevsDailyGo.svg?type=small)](https://app.fossa.com/projects/git%2Bgithub.com%2FSynertry%2FRushDevsDailyGo?ref=badge_small)
 [![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FSynertry%2FRushDevsDailyGo.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2FSynertry%2FRushDevsDailyGo?ref=badge_shield)
@@ -61,8 +67,9 @@ The numbering is from the Discord channel, some numbers are missing, because tho
 This repository is licensed under the Boost Software License 1.0. See [LICENSE](https://github.com/Synertry/RushDevsDailyGo/blob/main/LICENSE)
 
 Further attribution belongs to:
- - Synertry
-   - [GoSysUtils](https://github.com/Synertry/GoSysUtils)
- - Google (The Go Authors)
-   - Coding language [Go](https://go.dev/)
-   - module [go-cmp](https://github.com/google/go-cmp) for diff beautifier in comparing test outputs
+
+- Synertry
+  - [GoSysUtils](https://github.com/Synertry/GoSysUtils)
+- Google (The Go Authors)
+  - Coding language [Go](https://go.dev/)
+  - module [go-cmp](https://github.com/google/go-cmp) for diff beautifier in comparing test outputs
