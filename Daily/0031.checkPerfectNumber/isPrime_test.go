@@ -59,7 +59,7 @@ func TestIsPrimeMillerRabin(t *testing.T) {
 	coreTestIsPrime(t, isPrimeMillerRabin)
 }
 
-func benchmarkIsPrime(b *testing.B, fn func(int) bool) {
+func coreBenchmarkIsPrime(b *testing.B, fn func(int) bool) {
 	for _, bmP := range benchmarksPrimes {
 		b.Run(bmP.name, func(b *testing.B) {
 			var result bool
@@ -73,13 +73,13 @@ func benchmarkIsPrime(b *testing.B, fn func(int) bool) {
 }
 
 func BenchmarkIsPrime(b *testing.B) {
-	benchmarkIsPrime(b, isPrime)
+	coreBenchmarkIsPrime(b, isPrime)
 }
 
 func BenchmarkIsPrimeBaillePSW(b *testing.B) {
-	benchmarkIsPrime(b, isPrimeBaillePSW)
+	coreBenchmarkIsPrime(b, isPrimeBaillePSW)
 }
 
 func BenchmarkIsPrimeMillerRabin(b *testing.B) {
-	benchmarkIsPrime(b, isPrimeMillerRabin)
+	coreBenchmarkIsPrime(b, isPrimeMillerRabin)
 }
