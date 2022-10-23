@@ -31,6 +31,8 @@ func init() {
 	}
 }
 
+// ##### Tests #####
+
 func TestMainFunc(t *testing.T) {
 	want := fmt.Sprintf("Number of set bits in %d is:\n\t-> %d", num, one_bits(num))
 	got := IO.GetOutput(main)
@@ -39,85 +41,58 @@ func TestMainFunc(t *testing.T) {
 	}
 }
 
-func TestOne_bits(t *testing.T) {
+func testOne_bits(t *testing.T, fn func(int) int) {
 	for i := 0; i < maxTestSize; i++ {
 		std := bits.OnesCount64(uint64(i))
-		res := one_bits(i)
+		res := fn(i)
 		if std != res {
 			t.Fatalf("input: %d, expected %d, got %d", i, std, res)
 		}
 	}
+}
+
+func TestOne_bits(t *testing.T) {
+	testOne_bits(t, one_bits)
 }
 
 func TestOne_bitsNonBitOps(t *testing.T) {
-	for i := 0; i < maxTestSize; i++ {
-		std := bits.OnesCount64(uint64(i))
-		res := one_bitsNonBitOps(i)
-		if std != res {
-			t.Fatalf("input: %d, expected %d, got %d", i, std, res)
-		}
-	}
+	testOne_bits(t, one_bitsNonBitOps)
 }
 
 func TestOne_bitsO1(t *testing.T) {
-	for i := 0; i < maxTestSize; i++ {
-		std := bits.OnesCount64(uint64(i))
-		// res := one_bitsO1(uint64(i))
-		res := one_bitsO1(i)
-		if std != res {
-			t.Fatalf("input: %d, expected %d, got %d", i, std, res)
-		}
+	testOne_bits(t, one_bitsO1)
+}
+
+// ##### Benchmarks #####
+
+func benchmarkOne_bits(b *testing.B, fn func(int) int) {
+	for _, bm := range benchmarks {
+		b.Run(bm.name, func(b *testing.B) {
+			cnt, input := 0, bm.input
+			b.ResetTimer()
+			for i := 0; i < b.N; i++ {
+				cnt = fn(input)
+			}
+			bitCount = cnt
+		})
 	}
 }
 
 func BenchmarkOne_bits(b *testing.B) {
-	for _, bm := range benchmarks {
-		b.Run(bm.name, func(b *testing.B) {
-			cnt, input := 0, bm.input
-			b.ResetTimer()
-			for i := 0; i < b.N; i++ {
-				cnt = one_bits(input)
-			}
-			bitCount = cnt
-		})
-	}
+	benchmarkOne_bits(b, one_bits)
 }
 
 func BenchmarkOne_bitsNonBitOps(b *testing.B) {
-	for _, bm := range benchmarks {
-		b.Run(bm.name, func(b *testing.B) {
-			cnt, input := 0, bm.input
-			b.ResetTimer()
-			for i := 0; i < b.N; i++ {
-				cnt = one_bitsNonBitOps(input)
-			}
-			bitCount = cnt
-		})
-	}
+	benchmarkOne_bits(b, one_bitsNonBitOps)
 }
 
 func BenchmarkOne_bitsO1(b *testing.B) {
-	for _, bm := range benchmarks {
-		b.Run(bm.name, func(b *testing.B) {
-			cnt, input := 0, bm.input
-			b.ResetTimer()
-			for i := 0; i < b.N; i++ {
-				cnt = one_bitsO1(input)
-			}
-			bitCount = cnt
-		})
-	}
+	benchmarkOne_bits(b, one_bitsO1)
 }
 
 func BenchmarkBitsOnesCount(b *testing.B) {
-	for _, bm := range benchmarks {
-		b.Run(bm.name, func(b *testing.B) {
-			cnt, input := 0, uint(bm.input)
-			b.ResetTimer()
-			for i := 0; i < b.N; i++ {
-				cnt = bits.OnesCount(input)
-			}
-			bitCount = cnt
-		})
+	bitsOnesCount := func(num int) int {
+		return bits.OnesCount(uint(num))
 	}
+	benchmarkOne_bits(b, bitsOnesCount)
 }

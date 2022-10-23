@@ -89,30 +89,25 @@ func TestFindKthLargest(t *testing.T) {
 	}
 }
 
-func BenchmarkFindKthLargest(b *testing.B) {
+func benchmarkFindKthLargest(b *testing.B, fn func([]int, int) int) {
 	for _, bm := range benchmarks {
 		b.Run(bm.name, func(b *testing.B) {
 			input, target, result := random.Perm(bm.len), random.Intn(bm.len-1)+1, 0
 			b.ResetTimer()
 			for i := 0; i < b.N; i++ {
-				result = findKthLargest(input, target)
+				result = fn(input, target)
 			}
 			resultInt = result
 		})
 	}
 }
 
+func BenchmarkFindKthLargest(b *testing.B) {
+	benchmarkFindKthLargest(b, findKthLargest)
+}
+
 func BenchmarkFindKthLargestSimple(b *testing.B) {
-	for _, bm := range benchmarks {
-		b.Run(bm.name, func(b *testing.B) {
-			input, target, result := random.Perm(bm.len), random.Intn(bm.len-1)+1, 0
-			b.ResetTimer()
-			for i := 0; i < b.N; i++ {
-				result = simpleSolution(input, target)
-			}
-			resultInt = result
-		})
-	}
+	benchmarkFindKthLargest(b, simpleSolution)
 }
 
 func simpleSolution(arr []int, k int) int {

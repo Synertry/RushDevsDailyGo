@@ -37,71 +37,49 @@ func init() {
 	}
 }
 
-func TestIsPrime(t *testing.T) {
+func testIsPrime(t *testing.T, fn func(int) bool) {
 	for name, tcP := range testsPrimes {
 		t.Run(name, func(t *testing.T) {
-			if got := isPrime(tcP.input); got != tcP.want {
+			if got := fn(tcP.input); got != tcP.want {
 				t.Errorf("input: %d, expected: %t, got: %t", tcP.input, tcP.want, got)
 			}
 		})
 	}
+}
+
+func TestIsPrime(t *testing.T) {
+	testIsPrime(t, isPrime)
 }
 
 func TestIsPrimeBaillePSW(t *testing.T) {
-	for name, tcP := range testsPrimes {
-		t.Run(name, func(t *testing.T) {
-			if got := isPrimeBaillePSW(tcP.input); got != tcP.want {
-				t.Errorf("input: %d, expected: %t, got: %t", tcP.input, tcP.want, got)
-			}
-		})
-	}
+	testIsPrime(t, isPrimeBaillePSW)
 }
 
 func TestIsPrimeMillerRabin(t *testing.T) {
-	for name, tcP := range testsPrimes {
-		t.Run(name, func(t *testing.T) {
-			if got := isPrimeMillerRabin(tcP.input); got != tcP.want {
-				t.Errorf("input: %d, expected: %t, got: %t", tcP.input, tcP.want, got)
+	testIsPrime(t, isPrimeMillerRabin)
+}
+
+func benchmarkIsPrime(b *testing.B, fn func(int) bool) {
+	for _, bmP := range benchmarksPrimes {
+		b.Run(bmP.name, func(b *testing.B) {
+			var result bool
+			b.ResetTimer()
+			for i := 0; i < 100; i++ {
+				result = fn(bmP.len)
 			}
+			resultBool = result
 		})
 	}
 }
 
 func BenchmarkIsPrime(b *testing.B) {
-	for _, bmP := range benchmarksPrimes {
-		b.Run(bmP.name, func(b *testing.B) {
-			var result bool
-			b.ResetTimer()
-			for i := 0; i < b.N; i++ {
-				result = isPrime(bmP.len)
-			}
-			resultBool = result
-		})
-	}
+	benchmarkIsPrime(b, isPrime)
 }
 
 func BenchmarkIsPrimeBaillePSW(b *testing.B) {
-	for _, bmP := range benchmarksPrimes {
-		b.Run(bmP.name, func(b *testing.B) {
-			var result bool
-			b.ResetTimer()
-			for i := 0; i < b.N; i++ {
-				result = isPrimeBaillePSW(bmP.len)
-			}
-			resultBool = result
-		})
-	}
+	benchmarkIsPrime(b, isPrimeBaillePSW)
 }
 
 func BenchmarkIsPrimeMillerRabin(b *testing.B) {
-	for _, bmP := range benchmarksPrimes {
-		b.Run(bmP.name, func(b *testing.B) {
-			var result bool
-			b.ResetTimer()
-			for i := 0; i < b.N; i++ {
-				result = isPrimeMillerRabin(bmP.len)
-			}
-			resultBool = result
-		})
-	}
+	benchmarkIsPrime(b, isPrimeMillerRabin)
 }

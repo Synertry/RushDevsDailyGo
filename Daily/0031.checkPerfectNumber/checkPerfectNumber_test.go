@@ -46,10 +46,10 @@ func TestMainFunc(t *testing.T) {
 	}
 }
 
-func TestCheckPerfectNumberSqrt(t *testing.T) {
+func testCheckPerfectNumber(t *testing.T, fn func(int) bool) {
 	for name, tc := range tests {
 		t.Run(name, func(t *testing.T) {
-			got := checkPerfectNumberSqrt(tc.input)
+			got := fn(tc.input)
 			if got != tc.want {
 				t.Errorf("input: %d, expected: %t, got: %t", tc.input, tc.want, got)
 			}
@@ -60,46 +60,34 @@ func TestCheckPerfectNumberSqrt(t *testing.T) {
 	}
 }
 
+func TestCheckPerfectNumberSqrt(t *testing.T) {
+	testCheckPerfectNumber(t, checkPerfectNumberSqrt)
+}
+
 func TestCheckPerfectNumber(t *testing.T) {
-	for name, tc := range tests {
-		t.Run(name, func(t *testing.T) {
-			got := checkPerfectNumber(tc.input)
-			if got != tc.want {
-				t.Errorf("input: %d, expected: %t, got: %t", tc.input, tc.want, got)
-			}
-		})
-		if t.Failed() {
-			break
-		}
-	}
+	testCheckPerfectNumber(t, checkPerfectNumber)
 }
 
 // ##### Benchmarks #####
 
-func BenchmarkCheckPerfectNumberSqrt(b *testing.B) {
+func benchmarkCheckPerfectNumber(b *testing.B, fn func(int) bool) {
 	for _, bm := range benchmarks {
 		b.Run(bm.name, func(b *testing.B) {
 			b.ReportAllocs()
 			var result bool
 			b.ResetTimer()
 			for i := 0; i < b.N; i++ {
-				result = checkPerfectNumberSqrt(bm.num)
+				result = fn(bm.num)
 			}
 			resultBool = result
 		})
 	}
 }
 
+func BenchmarkCheckPerfectNumberSqrt(b *testing.B) {
+	benchmarkCheckPerfectNumber(b, checkPerfectNumberSqrt)
+}
+
 func BenchmarkCheckPerfectNumber(b *testing.B) {
-	for _, bm := range benchmarks {
-		b.Run(bm.name, func(b *testing.B) {
-			b.ReportAllocs()
-			var result bool
-			b.ResetTimer()
-			for i := 0; i < b.N; i++ {
-				result = checkPerfectNumber(bm.num)
-			}
-			resultBool = result
-		})
-	}
+	benchmarkCheckPerfectNumber(b, checkPerfectNumber)
 }
