@@ -12,13 +12,13 @@ updates:
       time: "19:00"
       timezone: Europe/Berlin
     # Raise pull requests for version updates
-    # to gomod against the `develop` branch
-    # Labels on pull requests for version updates only
+    # to gomod against the `staging` branch
     target-branch: "staging"
-    # Disable rebasing for npm pull requests
-    rebase-strategy: "disabled"
+    # Disable rebasing pull requests
+    rebase-strategy: "auto"
     # Allow up to 10 open pull requests
     open-pull-requests-limit: 10
+    # Labels on pull requests for version updates only
     labels:
       - "dependabot"
       - "gomod"
@@ -26,4 +26,22 @@ updates:
     reviewers: [ Synertry ]
     commit-message:
       prefix: "Go Modules"
+      include: "scope"
+
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: daily
+      time: "19:00"
+      timezone: Europe/Berlin
+    target-branch: "staging"
+    rebase-strategy: "auto"
+    open-pull-requests-limit: 10
+    labels:
+      - "dependabot"
+      - "gomod"
+    assignees: [ Synertry ]
+    reviewers: [ Synertry ]
+    commit-message:
+      prefix: "GitHub Actions"
       include: "scope"
