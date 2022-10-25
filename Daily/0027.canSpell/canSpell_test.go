@@ -66,10 +66,10 @@ func BenchmarkCanSpell(b *testing.B) {
 	for _, bm := range benchmarks {
 		b.Run(bm.name, func(b *testing.B) {
 			b.ReportAllocs()
-			input, word, result := Slice.GenRandomStringsLen(bm.len, 1), Str.GenRandom(5), false
+			input, target, result := Slice.RandomStringsLen(bm.len, 1), Str.Random(5), false
 			b.ResetTimer()
 			for i := 0; i < b.N; i++ {
-				result = canSpell(input, word)
+				result = canSpell(input, target)
 			}
 			resultBool = result
 		})

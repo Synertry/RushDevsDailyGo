@@ -64,7 +64,7 @@ func BenchmarkCreate_palindrome(b *testing.B) {
 
 	for _, bm := range benchmarks {
 		b.Run(bm.name, func(b *testing.B) {
-			input, result := Str.GenRandom(bm.len), false
+			input, result := Str.Random(bm.len), false
 			b.ResetTimer()
 			for i := 0; i < b.N; i++ {
 				result = create_palindrome(input)
