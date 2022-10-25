@@ -163,22 +163,21 @@ jobs:
           deny-licenses: LGPL-2.0, BSD-2-Clause, Apache-1.1, Apache-2.0
           # allow-licenses: MIT, BSL-1.0, BSD-3-CLAUSE, GPL-3.0
 
-      - name: Generate Code Coverage
-        if: needs.precheck.outputs.doc_only != 'true'
-        run: go test -v -race -vet off -covermode atomic -coverprofile coverage.out ./Daily/...
-
-      # Does not work atm, see https://github.com/paambaati/codeclimate-action/issues/630
-      # - name: Generate Code Coverage & report to Codeclimate
+      # - name: Generate Code Coverage
       #   if: needs.precheck.outputs.doc_only != 'true'
-      #   uses: paambaati/codeclimate-action@v3.2.0
-      #   env:
-      #     # Set CC_TEST_REPORTER_ID as secret of your repo
-      #     CC_TEST_REPORTER_ID: ${{secrets.CC_TEST_REPORTER_ID}}
-      #   with:
-      #     # The report file must be there, otherwise Code Climate won't find it
-      #     coverageCommand: go test -v -race -vet off -covermode atomic -coverprofile coverage.out ./Daily/...
-      #     coverageLocations: |
-      #       coverage.out
+      #   run: go test -v -race -vet off -covermode atomic -coverprofile coverage.out ./Daily/...
+
+      - name: Generate Code Coverage & report to Codeclimate
+        if: needs.precheck.outputs.doc_only != 'true'
+        uses: paambaati/codeclimate-action@v3.2.0
+        env:
+          # Set CC_TEST_REPORTER_ID as secret of your repo
+          CC_TEST_REPORTER_ID: ${{secrets.CC_TEST_REPORTER_ID}}
+        with:
+          # The report file must be there, otherwise Code Climate won't find it
+          coverageCommand: go test -v -race -vet off -covermode atomic -coverprofile coverage.out ./Daily/...
+          coverageLocations: ${{ github.workspace }}/coverage.out:gocov
+          prefix: github.com/Synertry/RushDevsDailyGo
 
       - name: Report test coverage to Foresight
         uses: runforesight/foresight-test-kit-action@v1

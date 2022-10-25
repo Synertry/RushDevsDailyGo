@@ -9,6 +9,7 @@
 [![Maintainability](https://api.codeclimate.com/v1/badges/919b7d29e66bf0d364e3/maintainability)](https://codeclimate.com/github/Synertry/RushDevsDailyGo/maintainability)
 <br>
 [![codecov](https://codecov.io/gh/Synertry/RushDevsDailyGo/branch/staging/graph/badge.svg?token=YGEVWAPDKZ)](https://codecov.io/gh/Synertry/RushDevsDailyGo)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/919b7d29e66bf0d364e3/test_coverage)](https://codeclimate.com/github/Synertry/RushDevsDailyGo/test_coverage)
 [![Foresight Docs](https://api-public.service.runforesight.com/api/v1/badge/test?repoId=7d9a782d-7215-4997-9df1-d39234974056)](https://docs.runforesight.com/)
 [![Foresight Docs](https://api-public.service.runforesight.com/api/v1/badge/success?repoId=7d9a782d-7215-4997-9df1-d39234974056)](https://docs.runforesight.com/)
 [![Foresight Docs](https://api-public.service.runforesight.com/api/v1/badge/utilization?repoId=7d9a782d-7215-4997-9df1-d39234974056)](https://docs.runforesight.com/)
