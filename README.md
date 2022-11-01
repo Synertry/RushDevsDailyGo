@@ -43,11 +43,11 @@ The numbering is from the Discord channel, some numbers are missing, because tho
 | # | Name | Solution | Tests | Benchmarks | Time | Space | Remarks |
 | :--- | --- | :---: | :---: | :---: | --- | --- | :--- |
 | [1](https://github.com/Synertry/RushDevsDailyGo/tree/main/Daily/0001.intersection) | [intersection](https://github.com/Synertry/RushDevsDailyGo/blob/main/Daily/0001.intersection/intersection.go) | ✔️ | ✔️ | ✔️ | O(n+m) | O(n) |
-| [2](https://github.com/Synertry/RushDevsDailyGo/tree/main/Daily/0002.meeting-rooms) | [meeting_rooms](https://github.com/Synertry/RushDevsDailyGo/blob/main/Daily/0002.meeting-rooms/meeting-rooms.go) | | | | | | |
-| [3](https://github.com/Synertry/RushDevsDailyGo/tree/main/Daily/0003.min-operations) | [min_operations](https://github.com/Synertry/RushDevsDailyGo/blob/main/Daily/0003.min-operations/min-operations.go) | | | | | | |
-| [5](https://github.com/Synertry/RushDevsDailyGo/tree/main/Daily/0005.shortest-dist) | [shortest_dist](https://github.com/Synertry/RushDevsDailyGo/blob/main/Daily/0005.shortest-dist/shortest-dist.go) | | | | | | |
-| [7](https://github.com/Synertry/RushDevsDailyGo/tree/main/Daily/0007.pascal-triangle-row) | [pascal_triangle_row](https://github.com/Synertry/RushDevsDailyGo/blob/main/Daily/0007.pascal-triangle-row/pascal-triangle-row.go) | | | | | | |
-| [9](https://github.com/Synertry/RushDevsDailyGo/tree/main/Daily/0009.sum-combinations) | [sum_combinations](https://github.com/Synertry/RushDevsDailyGo/blob/main/Daily/0009.sum-combinations/sum-combinations.go) | | | | | | |
+| [2](https://github.com/Synertry/RushDevsDailyGo/tree/main/Daily/0002.meeting-rooms) | [meeting_rooms](https://github.com/Synertry/RushDevsDailyGo/blob/main/Daily/0002.meeting-rooms/README.md) | | | | | | |
+| [3](https://github.com/Synertry/RushDevsDailyGo/tree/main/Daily/0003.min-operations) | [min_operations](https://github.com/Synertry/RushDevsDailyGo/blob/main/Daily/0003.min-operations/README.md) | | | | | | |
+| [5](https://github.com/Synertry/RushDevsDailyGo/tree/main/Daily/0005.shortest-dist) | [shortest_dist](https://github.com/Synertry/RushDevsDailyGo/blob/main/Daily/0005.shortest-dist/README.md) | | | | | | |
+| [7](https://github.com/Synertry/RushDevsDailyGo/tree/main/Daily/0007.pascal-triangle-row) | [pascal_triangle_row](https://github.com/Synertry/RushDevsDailyGo/blob/main/Daily/0007.pascal-triangle-row/README.md) | | | | | | |
+| [9](https://github.com/Synertry/RushDevsDailyGo/tree/main/Daily/0009.sum-combinations) | [sum_combinations](https://github.com/Synertry/RushDevsDailyGo/blob/main/Daily/0009.sum-combinations/README.md) | | | | | | |
 | [11](https://github.com/Synertry/RushDevsDailyGo/tree/main/Daily/0011.one-bits) | [one_bits](https://github.com/Synertry/RushDevsDailyGo/blob/main/Daily/0011.one-bits/one-bits.go) | ✔️ | ✔️ | ✔️ | **O(1)** | O(1) | Hamming Weight |
 | [13](https://github.com/Synertry/RushDevsDailyGo/tree/main/Daily/0013.majority-element) | [majority_element](https://github.com/Synertry/RushDevsDailyGo/blob/main/Daily/0013.majority-element/majority-element.go) | ✔️ | ✔️ | ✔️ | O(log n) | O(n) | |
 | [14](https://github.com/Synertry/RushDevsDailyGo/tree/main/Daily/0014.maxNonAdjacentSum) | [maxNonAdjacentSum](https://github.com/Synertry/RushDevsDailyGo/blob/main/Daily/0014.maxNonAdjacentSum/maxNonAdjacentSum.go) | ✔️ | ✔️ | ✔️ | O(n) | | |
@@ -63,6 +63,7 @@ The numbering is from the Discord channel, some numbers are missing, because tho
 | [31](https://github.com/Synertry/RushDevsDailyGo/tree/main/Daily/0031.checkPerfectNumber) | [checkPerfectNumber](https://github.com/Synertry/RushDevsDailyGo/blob/main/Daily/0031.checkPerfectNumber/checkPerfectNumber.go) | ✔️ | ✔️ | ✔️ | O(√(log(n))) | O(1) | ❤ |
 | [32](https://github.com/Synertry/RushDevsDailyGo/tree/main/Daily/0032.frac-to-dec) | [frac_to_dec](https://github.com/Synertry/RushDevsDailyGo/blob/main/Daily/0032.frac-to-dec/frac-to-dec.go) | ✔️ | ✔️ | ✔️ | O(?) | | Hard w/o recursion |
 | [34](https://github.com/Synertry/RushDevsDailyGo/tree/main/Daily/0034.longest-substring-with-k-distinct-characters) | [longest_substring_with_k_distinct_characters](https://github.com/Synertry/RushDevsDailyGo/blob/main/Daily/0034.longest-substring-with-k-distinct-characters/longest_substring_with_k_distinct_characters.go) | ✔️ | ✔️ | ✔️ | O(n) | O(1) | Learned sliding windows |
+| [36](https://github.com/Synertry/RushDevsDailyGo/tree/main/Daily/0036.sortNums) | [sortNums](https://github.com/Synertry/RushDevsDailyGo/blob/main/Daily/0036.sortNumns/sortNums.go) | ✔️ | ✔️ | ✔️ | O(n) | O(1) | casual pointer swapping |
 
 ## License
   
