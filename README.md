@@ -64,6 +64,7 @@ The numbering is from the Discord channel, some numbers are missing, because tho
 | [32](https://github.com/Synertry/RushDevsDailyGo/tree/main/Daily/0032.frac-to-dec) | [frac_to_dec](https://github.com/Synertry/RushDevsDailyGo/blob/main/Daily/0032.frac-to-dec/frac-to-dec.go) | ✔️ | ✔️ | ✔️ | O(?) | | Hard w/o recursion |
 | [34](https://github.com/Synertry/RushDevsDailyGo/tree/main/Daily/0034.longest-substring-with-k-distinct-characters) | [longest_substring_with_k_distinct_characters](https://github.com/Synertry/RushDevsDailyGo/blob/main/Daily/0034.longest-substring-with-k-distinct-characters/longest_substring_with_k_distinct_characters.go) | ✔️ | ✔️ | ✔️ | O(n) | O(1) | Learned sliding windows |
 | [36](https://github.com/Synertry/RushDevsDailyGo/tree/main/Daily/0036.sortNums) | [sortNums](https://github.com/Synertry/RushDevsDailyGo/blob/main/Daily/0036.sortNumns/sortNums.go) | ✔️ | ✔️ | ✔️ | O(n) | O(1) | casual pointer swapping |
+| [38](https://github.com/Synertry/RushDevsDailyGo/tree/main/Daily/0038.courses-to-take) | [courses_to_take](https://github.com/Synertry/RushDevsDailyGo/blob/main/Daily/0038.courses-to-take/courses_to_take.go) | ✔️ | ✔️ | | O(V+E) | O(n) | graph adjacency list |
 
 ## License
   
