@@ -22,7 +22,7 @@ jobs:
       doc_only: ${{ steps.diff_check.outputs.output }}
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3.1.0
+        uses: actions/checkout@v3.2.0
         with:
           ref: ${{ github.head_ref }}
           fetch-depth: 2 # fetch last two commits to compare
@@ -60,7 +60,7 @@ jobs:
 
       - name: Checkout code
         if: needs.precheck.outputs.doc_only != 'true'
-        uses: actions/checkout@v3.1.0
+        uses: actions/checkout@v3.2.0
         with:
           ref: staging
 
@@ -127,7 +127,7 @@ jobs:
 
       - name: Checkout code
         if: needs.precheck.outputs.doc_only != 'true'
-        uses: actions/checkout@v3.1.0
+        uses: actions/checkout@v3.2.0
         with:
           ref: staging
 
@@ -214,7 +214,7 @@ jobs:
     needs: review-code
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3.1.0
+        uses: actions/checkout@v3.2.0
         with:
           ref: staging
 
