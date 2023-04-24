@@ -169,7 +169,7 @@ jobs:
 
       - name: Generate Code Coverage & report to Codeclimate
         if: needs.precheck.outputs.doc_only != 'true'
-        uses: paambaati/codeclimate-action@v3.2.0
+        uses: paambaati/codeclimate-action@v4.0.0
         env:
           # Set CC_TEST_REPORTER_ID as secret of your repo
           CC_TEST_REPORTER_ID: ${{secrets.CC_TEST_REPORTER_ID}}
