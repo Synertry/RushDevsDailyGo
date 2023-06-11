@@ -48,7 +48,7 @@ jobs:
       contents: read
     strategy:
       matrix:
-        go-version: [ '1.18.x', '1.19.x' ]
+        go-version: [ '1.18.x', '1.19.x', '1.20.x' ]
       fail-fast: true # Cancel all jobs if one fails
 
     steps:
@@ -102,7 +102,7 @@ jobs:
       contents: read
     strategy:
       matrix:
-        go-version: [ '1.19.x' ]
+        go-version: [ '1.20.x' ]
     steps:
       - name: Checkout code
         if: needs.precheck.outputs.doc_only != 'true'
