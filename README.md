@@ -1,21 +1,17 @@
 # RushDevsDailyGo
 
 <!-- [![Go Reference](https://pkg.go.dev/badge/github.com/Synertry/RushDevsDailyGo.svg)](https://pkg.go.dev/github.com/Synertry/RushDevsDailyGo) -->
-[![License](https://img.shields.io/badge/License-Boost_1.0-lightblue.svg)](https://www.boost.org/LICENSE_1_0.txt)
 ![GitHub go.mod Go version](https://img.shields.io/github/go-mod/go-version/Synertry/RushDevsDailyGo?logo=Go)
 [![CI](https://github.com/Synertry/RushDevsDailyGo/actions/workflows/ci.yaml/badge.svg?branch=staging)](https://github.com/Synertry/RushDevsDailyGo/actions/workflows/ci.yaml?query=branch%3Astaging)
+[![License](https://img.shields.io/badge/License-Boost_1.0-lightblue.svg)](https://www.boost.org/LICENSE_1_0.txt)
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FSynertry%2FRushDevsDailyGo.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2FSynertry%2FRushDevsDailyGo?ref=badge_shield)
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FSynertry%2FRushDevsDailyGo.svg?type=small)](https://app.fossa.com/projects/git%2Bgithub.com%2FSynertry%2FRushDevsDailyGo?ref=badge_small)
+<br>
 [![Go Report Card](https://goreportcard.com/badge/github.com/Synertry/RushDevsDailyGo)](https://goreportcard.com/report/github.com/Synertry/RushDevsDailyGo)
 [![CodeFactor](https://www.codefactor.io/repository/github/synertry/rushdevsdailygo/badge)](https://www.codefactor.io/repository/github/synertry/rushdevsdailygo)
 [![Maintainability](https://api.codeclimate.com/v1/badges/919b7d29e66bf0d364e3/maintainability)](https://codeclimate.com/github/Synertry/RushDevsDailyGo/maintainability)
-<br>
 [![codecov](https://codecov.io/gh/Synertry/RushDevsDailyGo/branch/staging/graph/badge.svg?token=YGEVWAPDKZ)](https://codecov.io/gh/Synertry/RushDevsDailyGo)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/919b7d29e66bf0d364e3/test_coverage)](https://codeclimate.com/github/Synertry/RushDevsDailyGo/test_coverage)
-[![Foresight Docs](https://api-public.service.runforesight.com/api/v1/badge/test?repoId=7d9a782d-7215-4997-9df1-d39234974056)](https://docs.runforesight.com/)
-[![Foresight Docs](https://api-public.service.runforesight.com/api/v1/badge/success?repoId=7d9a782d-7215-4997-9df1-d39234974056)](https://docs.runforesight.com/)
-[![Foresight Docs](https://api-public.service.runforesight.com/api/v1/badge/utilization?repoId=7d9a782d-7215-4997-9df1-d39234974056)](https://docs.runforesight.com/)
-<br>
-[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FSynertry%2FRushDevsDailyGo.svg?type=small)](https://app.fossa.com/projects/git%2Bgithub.com%2FSynertry%2FRushDevsDailyGo?ref=badge_small)
-[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FSynertry%2FRushDevsDailyGo.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2FSynertry%2FRushDevsDailyGo?ref=badge_shield)
 <br>
 [![DeepSource Repo](https://static.deepsource.io/deepsource-badge-light-mini.svg)](https://deepsource.io/gh/Synertry/RushDevsDailyGo)
 [![DeepSource Active Issues](https://deepsource.io/gh/Synertry/RushDevsDailyGo.svg/?label=active+issues&show_trend=true&token=A5DevG3b4Ave2H8Cu6tliGkF)](https://deepsource.io/gh/Synertry/RushDevsDailyGo/?ref=repository-badge)
@@ -23,6 +19,11 @@
 > "DevOps is fun until something breaks"
 
 ## About
+
+Update 2023-06-11:
+This is now just a reference repo for my table driven tests, benchmarks and CI/CD.
+It will be active for a while before archiving to gradually migrate CI/CD service to another repo.
+
 
 Go Code for dailies challenges from the [Discord server RushDevs](https://discord.gg/ABAkZeyr9A) in Channel [🧠 | daily-aufgaben](https://discord.com/channels/943265457727766608/1018218760089378828)<br>
 Here is the invite link to join the server:

@@ -52,12 +52,6 @@ jobs:
       fail-fast: true # Cancel all jobs if one fails
 
     steps:
-      - name: Collect Workflow Telemetry w/ Foresight
-        uses: runforesight/foresight-workflow-kit-action@v1
-        if: always() && needs.precheck.outputs.doc_only != 'true'
-        with:
-          api_key: ${{ secrets.FORESIGHT_API_KEY }}
-
       - name: Checkout code
         if: needs.precheck.outputs.doc_only != 'true'
         uses: actions/checkout@v3.5.3
@@ -88,15 +82,6 @@ jobs:
         if: needs.precheck.outputs.doc_only != 'true'
         run: go test -v -race -json ./Daily/... > ./test-report.json || true
 
-      - name: Analyze Test and/or Coverage Results
-        if: always() && needs.precheck.outputs.doc_only != 'true'
-        uses: runforesight/foresight-test-kit-action@v1
-        with:
-          api_key: ${{ secrets.FORESIGHT_API_KEY }}
-          test_framework: golang
-          test_format: json
-          test_path: ./test-report.json
-
       - name: Static code analysis
         if: needs.precheck.outputs.doc_only != 'true'
         uses: golangci/golangci-lint-action@v3
@@ -119,12 +104,6 @@ jobs:
       matrix:
         go-version: [ '1.19.x' ]
     steps:
-      - name: Collect Workflow Telemetry w/ Foresight
-        uses: runforesight/foresight-workflow-kit-action@v1
-        if: always() && needs.precheck.outputs.doc_only != 'true'
-        with:
-          api_key: ${{ secrets.FORESIGHT_API_KEY }}
-
       - name: Checkout code
         if: needs.precheck.outputs.doc_only != 'true'
         uses: actions/checkout@v3.5.3
@@ -172,20 +151,12 @@ jobs:
         uses: paambaati/codeclimate-action@v4.0.0
         env:
           # Set CC_TEST_REPORTER_ID as secret of your repo
-          CC_TEST_REPORTER_ID: ${{secrets.CC_TEST_REPORTER_ID}}
+          CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
         with:
           # The report file must be there, otherwise Code Climate won't find it
           coverageCommand: go test -v -race -vet off -covermode atomic -coverprofile coverage.out ./Daily/...
           coverageLocations: ${{ github.workspace }}/coverage.out:gocov
           prefix: github.com/Synertry/RushDevsDailyGo
-
-      - name: Report test coverage to Foresight
-        uses: runforesight/foresight-test-kit-action@v1
-        if: always() && needs.precheck.outputs.doc_only != 'true'
-        with:
-          api_key: ${{ secrets.FORESIGHT_API_KEY }}
-          coverage_format: golang
-          coverage_path: ./coverage.out
 
       - name: Report test coverage to Codecov
         if: needs.precheck.outputs.doc_only != 'true'
@@ -198,11 +169,15 @@ jobs:
 
       - name: Report test coverage to DeepSource
         if: needs.precheck.outputs.doc_only != 'true'
-        uses: deepsourcelabs/test-coverage-action@master
-        with:
-          key: go
-          coverage-file: coverage.out
-          dsn: ${{ secrets.DEEPSOURCE_DSN }}
+        shell: bash
+        env:
+          DEEPSOURCE_DSN: ${{ secrets.DEEPSOURCE_DSN }}
+        run: |
+          # Install DeepSource CLI
+          curl https://deepsource.io/cli | sh
+          
+          # Upload coverage report
+          ./bin/deepsource report --analyzer test-coverage --key go --value-file $GITHUB_WORKSPACE/coverage.out
 
 
   pull-request:
