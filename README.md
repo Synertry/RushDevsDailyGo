@@ -13,16 +13,16 @@
 [![codecov](https://codecov.io/gh/Synertry/RushDevsDailyGo/branch/staging/graph/badge.svg?token=YGEVWAPDKZ)](https://codecov.io/gh/Synertry/RushDevsDailyGo)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/919b7d29e66bf0d364e3/test_coverage)](https://codeclimate.com/github/Synertry/RushDevsDailyGo/test_coverage)
 <br>
-[![DeepSource Repo](https://static.deepsource.io/deepsource-badge-light-mini.svg)](https://deepsource.io/gh/Synertry/RushDevsDailyGo)
 [![DeepSource Active Issues](https://deepsource.io/gh/Synertry/RushDevsDailyGo.svg/?label=active+issues&show_trend=true&token=A5DevG3b4Ave2H8Cu6tliGkF)](https://deepsource.io/gh/Synertry/RushDevsDailyGo/?ref=repository-badge)
+<!-- [![DeepSource Repo](https://static.deepsource.io/deepsource-badge-light-mini.svg)](https://deepsource.io/gh/Synertry/RushDevsDailyGo) -->
 
-> "DevOps is fun until something breaks"
+> "DevOps is fun ~~until something breaks~~"
 
 ## About
 
 Update 2023-06-11:
 This is now just a reference repo for my table driven tests, benchmarks and CI/CD.
-It will be active for a while before archiving to gradually migrate CI/CD service to another repo.
+It will be active for a while before archiving to gradually migrate CI/CD services to another repo.
 
 
 Go Code for dailies challenges from the [Discord server RushDevs](https://discord.gg/ABAkZeyr9A) in Channel [🧠 | daily-aufgaben](https://discord.com/channels/943265457727766608/1018218760089378828)<br>

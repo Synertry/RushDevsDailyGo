@@ -1,6 +1,6 @@
 module github.com/Synertry/RushDevsDailyGo
 
-go 1.19
+go 1.20
 
 require (
 	github.com/Synertry/GoSysUtils v0.5.9
