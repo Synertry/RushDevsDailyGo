@@ -60,7 +60,7 @@ jobs:
 
       - name: Setup Go ${{ matrix.go-version }}
         if: needs.precheck.outputs.doc_only != 'true'
-        uses: actions/setup-go@v4
+        uses: actions/setup-go@v5
         with:
           go-version: ${{ matrix.go-version }}
           check-latest: true
@@ -112,7 +112,7 @@ jobs:
 
       - name: Setup Go ${{ matrix.go-version }}
         if: needs.precheck.outputs.doc_only != 'true'
-        uses: actions/setup-go@v4
+        uses: actions/setup-go@v5
         with:
           go-version: ${{ matrix.go-version }}
           check-latest: true
