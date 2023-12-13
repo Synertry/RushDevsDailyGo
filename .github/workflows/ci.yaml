@@ -124,13 +124,13 @@ jobs:
       # Initializes the CodeQL tools for scanning.
       - name: Initialize CodeQL
         if: needs.precheck.outputs.doc_only != 'true'
-        uses: github/codeql-action/init@v2
+        uses: github/codeql-action/init@v3
         with:
           languages: go
 
       - name: Perform CodeQL Analysis
         if: needs.precheck.outputs.doc_only != 'true'
-        uses: github/codeql-action/analyze@v2
+        uses: github/codeql-action/analyze@v3
 
       - name: Dependency Review
         if: needs.precheck.outputs.doc_only != 'true'
