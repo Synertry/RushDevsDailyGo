@@ -160,7 +160,7 @@ jobs:
 
       - name: Report test coverage to Codecov
         if: needs.precheck.outputs.doc_only != 'true'
-        uses: codecov/codecov-action@v3
+        uses: codecov/codecov-action@v4
         with:
           files: ./coverage.out
           flags: unittests
