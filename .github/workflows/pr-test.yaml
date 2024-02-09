@@ -60,7 +60,7 @@ jobs:
         run: go test -v -race ./Daily/...
 
       - name: Static code analysis
-        uses: golangci/golangci-lint-action@v3
+        uses: golangci/golangci-lint-action@v4
         with:
           version: latest
           skip-cache: true
